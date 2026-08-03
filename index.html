@@ -24,6 +24,12 @@
   .masthead h1 { margin: 0; font-size: 2.6rem; letter-spacing: 0.5px; }
   .masthead .sub { font-family: Arial, Helvetica, sans-serif; font-size: 1rem; opacity: 0.9; margin-top: 8px; }
   .masthead .meta { margin-top: 6px; font-family: Arial, Helvetica, sans-serif; font-size: 0.85rem; opacity: 0.8; }
+  .topnav { background: #0e1830; border-bottom: 3px solid #c9a227; position: sticky; top: 0; z-index: 10; }
+  .topnav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; }
+  .topnav li { margin: 0; }
+  .topnav a { display: block; padding: 10px 16px; font-family: Arial, Helvetica, sans-serif; font-size: 0.82rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.04em; color: #e8e2d0; text-decoration: none; border-right: 1px solid rgba(255,255,255,0.12); }
+  .topnav li:last-child a { border-right: none; }
+  .topnav a:hover { background: #1d2c52; color: #c9a227; }
   .container { max-width: 780px; margin: 0 auto; padding: 24px 20px 60px; }
   .note { font-family: Arial, Helvetica, sans-serif; font-size: 0.85rem; background: #fbf3d9; border: 1px solid #e8d99a; padding: 14px 18px; border-radius: 6px; color: #5c4a10; margin-bottom: 24px; line-height: 1.5; }
   .toc { background: #fff; border: 1px solid #e0ddd3; border-radius: 8px; padding: 18px 22px; margin-bottom: 28px; font-family: Arial, Helvetica, sans-serif; font-size: 0.88rem; }
@@ -59,6 +65,20 @@
   <div class="meta">Veckan som gått: 28 juli &ndash; 3 augusti 2026</div>
 </div>
 
+<nav class="topnav">
+  <ul>
+    <li><a href="#stockholmkultur">Stockholm</a></li>
+    <li><a href="#sverige">Sverige</a></li>
+    <li><a href="#utrikes">Utrikes</a></li>
+    <li><a href="#ledarsidorna">Politik</a></li>
+    <li><a href="#kulturrecensioner">Kultur</a></li>
+    <li><a href="#kulturdebatt">Debatt</a></li>
+    <li><a href="#miljo">Miljö &amp; Klimat</a></li>
+    <li><a href="#forskning">Forskning &amp; Framsteg</a></li>
+    <li><a href="#sport">Sport</a></li>
+  </ul>
+</nav>
+
 <div class="container">
 
   <div class="note">
@@ -80,6 +100,7 @@
       <li><a class="jump" href="#stockholmkultur">Kulturevenemang i Stockholm</a><span class="desc">En tät augustimånad av konserter, festival och idrott</span></li>
       <li><a class="jump" href="#mat">Mat &amp; dryck: sommarens smaker och krogscenen</a><span class="desc">Recept, vintips och debatten om hårda krogrecensioner</span></li>
       <li><a class="jump" href="#filosofipsykologi">Filosofi &amp; psykologi: fri eller formad?</a><span class="desc">Simone de Beauvoir och B.F. Skinner om människans natur</span></li>
+      <li><a class="jump" href="#forskning">Forskning &amp; framsteg: batterier, cancertest och cybersäkerhet</a><span class="desc">Veckans viktigaste tekniska och vetenskapliga genombrott</span></li>
     </ol>
   </nav>
 
@@ -325,6 +346,26 @@
       <strong class="lead">Analys:</strong> Det som gör Beauvoir och Skinner intressanta att läsa tillsammans är hur direkt deras skilda människosyner talar in i samtida frågor. Beauvoirs tanke att "kvinnlighet" är konstruerad snarare än given har blivit en standardreferens i debatter om identitet och representation, medan Skinners insikter om förstärkning numera oftast åberopas i sin mest oroande tillämpning: hur sociala medier och AI-chattbotar - se veckans mediedebatt om ungas "artificiella relationer" under Kulturdebatt ovan - utnyttjar exakt de mekanismer han beskrev för att hålla kvar användares uppmärksamhet. Frågan de tillsammans väcker är om den beauvoirianska friheten att "bli" den man vill vara fortfarande är meningsfull i en tid då så mycket av vår vardagliga uppmärksamhet formas av system byggda enligt skinneriansk logik.
     </div>
     <div class="sources">Källor: <a href="https://plato.stanford.edu/entries/beauvoir/" target="_blank" rel="noopener">Stanford Encyclopedia of Philosophy - Beauvoir</a>, <a href="https://www.britannica.com/biography/Simone-de-Beauvoir" target="_blank" rel="noopener">Encyclopaedia Britannica</a>, <a href="https://www.britannica.com/biography/B-F-Skinner" target="_blank" rel="noopener">Encyclopaedia Britannica - Skinner</a>, <a href="https://plato.stanford.edu/entries/behaviorism/" target="_blank" rel="noopener">Stanford Encyclopedia of Philosophy - Behaviorism</a></div>
+  </section>
+
+  <section class="card" id="forskning">
+    <span class="tag">Forskning &amp; framsteg &middot; Fördjupning</span>
+    <h2 class="section-title">Forskning &amp; framsteg: batterier, cancertest och cybersäkerhet</h2>
+    <div class="dateline">Veckan 28 juli &ndash; 3 augusti 2026</div>
+
+    <h3 class="paper">Energilagring: enkel kemitrick kan ge kraftfullare batterier</h3>
+    <p>En av veckans mer oväntade forskningsnyheter kom från batterifronten: forskare rapporterar att en förvånansvärt enkel förändring i natriumjonbatteriers kemi kan göra dem betydligt kraftfullare. Natriumjonbatterier har länge setts som ett billigare men svagare alternativ till litiumjonbatterier, eftersom natriumjoner är större och tyngre än litiumjoner. Det som gör fyndet extra intressant är att samma grundprincip - hur jonerna rör sig genom materialet - också öppnar för teknik som kan omvandla havsvatten till dricksvatten, vilket gör upptäckten relevant för både energilagring och global vattenförsörjning på en och samma gång. Parallellt har kemister vid Rice University hittat ett sätt att få neodym - en sällsynt jordartsmetall som används i permanentmagneter till bland annat elmotorer och vindkraftverk - att reagera med syre på ett sätt som tidigare ansetts osannolikt, med hjälp av en specialdesignad molekylär "korg" som positionerar atomerna rätt.</p>
+
+    <h3 class="paper">Medicin: ett blodprov för 50 cancerformer</h3>
+    <p>Inom medicinsk forskning är veckans mest lovande nyhet ett blodprov som kan upptäcka omkring 50 olika cancerformer redan innan de första symtomen visar sig - ett potentiellt genombrott för tidig diagnos, som historiskt är en av de starkaste enskilda faktorerna för överlevnad vid cancer. Samtidigt visar en fyra månader lång studie med 315 vuxna med bukfetma att förvånansvärt små doser regelbunden träning kan ge betydande hälsovinster - ett fynd som sänker tröskeln för vad som räknas som "tillräcklig" motion och kan göra livsstilsråd mer realistiska för fler. På materialsidan lyfts kombinationen av IoT-sensorer och redan existerande självläkande material fram som ett av årets viktigaste materialvetenskapliga genombrott, med potential att flytta hela industrier - från infrastruktur till konsumentelektronik - mot prediktivt underhåll snarare än reparation efter att skador redan uppstått.</p>
+
+    <h3 class="paper">Cybersäkerhet: tre incidenter på en vecka</h3>
+    <p>På säkerhetsfronten var veckan ovanligt händelserik. Fjärrhanteringsleverantören N-able bekräftade att angripare utnyttjat en autentiseringskringgång (CVE-2026-18577) i verktyget N-central för att skaffa sig fjärrstyrd administratörsåtkomst hos kunder - bolaget släppte en patchad version den 2 augusti och uppmanade kunder att uppdatera omedelbart. Samtidigt upptäcktes att angripare manipulerat en JavaScript-fil hos annonsteknikbolaget Adform och gjort om den till ett webbläsarbaserat verktyg som skriver om kryptovalutaadresser i realtid - en attack som spridit sig via flera annonsnätverk innan den upptäcktes. Det amerikanska läkemedelsbolaget Inotiv meddelade dessutom att man utsatts för en ransomware-attack där personuppgifter för 9 542 personer stulits. Tre helt olika typer av intrång - leverantörskedjeattack, annonsteknikmanipulation och rent utpressningsangrepp - inom loppet av en och samma vecka.</p>
+
+    <div class="analys-box">
+      <strong class="lead">Analys:</strong> Det gemensamma för veckans forskningsnyheter är hur ofta genombrott inom ett område visar sig ha oväntade tillämpningar inom ett helt annat - natriumbatterikemin som även kan avsalta havsvatten, självläkande material som möter sakernas internet snarare än att förbli en isolerad materialvetenskaplig kuriositet. Cybersäkerhetsnyheterna pekar samtidigt på en mindre optimistisk trend: att digital infrastruktur - fjärrhanteringsverktyg, annonsnätverk, läkemedelsbolagens system - attackeras via alltmer indirekta vägar, där leverantörer och mellanhänder blir ingångspunkten snarare än målet själv. För den som vill följa var forskningen faktiskt är på väg är kombinationen av dessa båda spår talande: samma vecka som vetenskapen tar kliv mot bättre batterier och tidigare cancerdiagnos, blir det tydligt att den digitala infrastruktur som bär upp både forskningen och vardagslivet fortsatt är sårbar på sätt som är svåra att förutse i förväg.
+    </div>
+    <div class="sources">Källor: <a href="https://www.sciencedaily.com/" target="_blank" rel="noopener">ScienceDaily</a>, <a href="https://www.cas.org/resources/cas-insights/scientific-breakthroughs-2026-emerging-trends-watch" target="_blank" rel="noopener">CAS</a>, <a href="https://gbhackers.com/weekly-cybersecurity-newsletter-july-27-august-1-2026/amp/" target="_blank" rel="noopener">GBHackers</a>, <a href="https://tech.co/news/data-breaches-updated-list" target="_blank" rel="noopener">Tech.co</a></div>
   </section>
 
   <footer>
