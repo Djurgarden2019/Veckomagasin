@@ -24,21 +24,20 @@
   .masthead h1 { margin: 0; font-size: 2.6rem; letter-spacing: 0.5px; }
   .masthead .sub { font-family: Arial, Helvetica, sans-serif; font-size: 1rem; opacity: 0.9; margin-top: 8px; }
   .masthead .meta { margin-top: 6px; font-family: Arial, Helvetica, sans-serif; font-size: 0.85rem; opacity: 0.8; }
-  .topnav { background: #0e1830; border-bottom: 3px solid #c9a227; position: sticky; top: 0; z-index: 10; }
-  .topnav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; }
-  .topnav li { margin: 0; }
-  .topnav a { display: block; padding: 10px 16px; font-family: Arial, Helvetica, sans-serif; font-size: 0.82rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.04em; color: #e8e2d0; text-decoration: none; border-right: 1px solid rgba(255,255,255,0.12); }
-  .topnav li:last-child a { border-right: none; }
-  .topnav a:hover { background: #1d2c52; color: #c9a227; }
+  .tabnav { background: #0e1830; border-bottom: 3px solid #c9a227; position: sticky; top: 0; z-index: 10; }
+  .tabnav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; }
+  .tabnav li { margin: 0; }
+  .tabnav button { display: block; padding: 10px 16px; font-family: Arial, Helvetica, sans-serif; font-size: 0.82rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.04em; color: #e8e2d0; background: none; border: none; border-right: 1px solid rgba(255,255,255,0.12); cursor: pointer; }
+  .tabnav li:last-child button { border-right: none; }
+  .tabnav button:hover { background: #1d2c52; color: #c9a227; }
+  .tabnav button.active { background: #c9a227; color: #14213d; }
+  .tabnav-extra { background: #16264a; }
+  .tabnav-extra button { font-weight: normal; opacity: 0.85; }
+  .tabnav-label { font-family: Arial, Helvetica, sans-serif; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; color: #8b93ab; text-align: center; padding: 4px 0 2px; background: #16264a; }
   .container { max-width: 780px; margin: 0 auto; padding: 24px 20px 60px; }
   .note { font-family: Arial, Helvetica, sans-serif; font-size: 0.85rem; background: #fbf3d9; border: 1px solid #e8d99a; padding: 14px 18px; border-radius: 6px; color: #5c4a10; margin-bottom: 24px; line-height: 1.5; }
-  .toc { background: #fff; border: 1px solid #e0ddd3; border-radius: 8px; padding: 18px 22px; margin-bottom: 28px; font-family: Arial, Helvetica, sans-serif; font-size: 0.88rem; }
-  .toc h2 { font-family: Georgia, serif; font-size: 1.05rem; margin: 0 0 10px; color: #14213d; }
-  .toc ol { margin: 0; padding-left: 20px; }
-  .toc li { margin-bottom: 6px; }
-  .toc a { color: #6b4b1a; text-decoration: none; font-weight: bold; }
-  .toc a:hover { text-decoration: underline; }
-  .toc .desc { display: block; font-weight: normal; color: #766f5e; font-size: 0.82rem; margin-top: 2px; }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
   section.card { background: #fff; border: 1px solid #e0ddd3; border-radius: 8px; padding: 26px 28px; margin-bottom: 28px; border-left: 5px solid #c9a227; }
   .tag { display: inline-block; font-family: Arial, Helvetica, sans-serif; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; background: #c9a227; color: #14213d; padding: 3px 10px; border-radius: 10px; margin-bottom: 10px; font-weight: bold; }
   h2.section-title { font-size: 1.5rem; color: #14213d; margin: 0 0 4px; }
@@ -54,7 +53,10 @@
   .sources a { color: #6b4b1a; }
   .inline-src { font-size: 0.9em; }
   footer { text-align: center; font-family: Arial, Helvetica, sans-serif; font-size: 0.75rem; color: #999; padding: 24px; }
-  a.jump { color: #6b4b1a; }
+  table.weather { border-collapse: collapse; width: 100%; font-family: Arial, Helvetica, sans-serif; font-size: 0.82rem; margin: 6px 0 14px; }
+  table.weather th, table.weather td { border: 1px solid #e0ddd3; padding: 7px 8px; text-align: center; }
+  table.weather th { background: #f7f3e6; color: #14213d; font-weight: bold; }
+  table.weather td.day { text-align: left; font-weight: bold; color: #14213d; }
 </style>
 </head>
 <body>
@@ -65,313 +67,340 @@
   <div class="meta">Veckan som gått: 28 juli &ndash; 3 augusti 2026</div>
 </div>
 
-<nav class="topnav">
+<nav class="tabnav">
   <ul>
-    <li><a href="#stockholmkultur">Stockholm</a></li>
-    <li><a href="#sverige">Sverige</a></li>
-    <li><a href="#utrikes">Utrikes</a></li>
-    <li><a href="#ledarsidorna">Politik</a></li>
-    <li><a href="#kulturrecensioner">Kultur</a></li>
-    <li><a href="#kulturdebatt">Debatt</a></li>
-    <li><a href="#miljo">Miljö &amp; Klimat</a></li>
-    <li><a href="#forskning">Forskning &amp; Framsteg</a></li>
-    <li><a href="#sport">Sport</a></li>
+    <li><button type="button" data-tab="stockholm" class="active">Stockholm</button></li>
+    <li><button type="button" data-tab="sverige">Sverige</button></li>
+    <li><button type="button" data-tab="utrikes">Utrikes</button></li>
+    <li><button type="button" data-tab="politik">Politik</button></li>
+    <li><button type="button" data-tab="kultur">Kultur</button></li>
+    <li><button type="button" data-tab="debatt">Debatt</button></li>
+    <li><button type="button" data-tab="miljo">Miljö &amp; Klimat</button></li>
+    <li><button type="button" data-tab="forskning">Forskning &amp; Framsteg</button></li>
+    <li><button type="button" data-tab="sport">Sport</button></li>
+  </ul>
+</nav>
+<div class="tabnav-label">Extra fördjupning</div>
+<nav class="tabnav tabnav-extra">
+  <ul>
+    <li><button type="button" data-tab="ekonomi">Ekonomi</button></li>
+    <li><button type="button" data-tab="mat">Mat &amp; Dryck</button></li>
+    <li><button type="button" data-tab="filosofi">Filosofi &amp; Psykologi</button></li>
   </ul>
 </nav>
 
 <div class="container">
 
   <div class="note">
-    <strong>Om detta test:</strong> Det här är en experimentell veckomagasin-version av NackaSidan, byggd på Styrbjörns begäran för att testa ett format som fördjupar och analyserar veckans nyheter ämne för ämne, i stället för att lista korta punkter dag för dag. Filen är fristående och påverkar inte den dagliga NackaSidan, den schemalagda uppdateringen eller GitHub Pages-sidan. Om formatet känns bra går det att bygga vidare på, byta ut den dagliga sidan mot, eller köra parallellt med den.
+    <strong>Om detta test:</strong> Det här är en experimentell veckomagasin-version av NackaSidan, byggd på Styrbjörns begäran för att testa ett format som fördjupar och analyserar veckans nyheter ämne för ämne, i stället för att lista korta punkter dag för dag. Sidan är nu uppdelad i flikar - klicka på en rubrik ovan för att läsa just den delen. Filen är fristående och påverkar inte den dagliga NackaSidan, den schemalagda uppdateringen eller GitHub Pages-sidan.
   </div>
 
-  <nav class="toc">
-    <h2>I detta nummer</h2>
-    <ol>
-      <li><a class="jump" href="#utrikes">Utrikes: Mellanöstern och Ukraina</a><span class="desc">Från attackhot till förhandlingsbord - och ett Ukraina som slår tillbaka</span></li>
-      <li><a class="jump" href="#sverige">Sverige &amp; politik: Valrörelsens sista skede</a><span class="desc">Opinionsläget, Tidöspänningarna och 42 dagar till valet</span></li>
-      <li><a class="jump" href="#ekonomi">Ekonomi: Inflationen vänder upp, Fed väntar</a><span class="desc">Eurozonen, Fed, och AI-branschens nya fas</span></li>
-      <li><a class="jump" href="#sport">Sport: Guimarães-affären och medaljkampen</a><span class="desc">Djurgården, Arsenal, golf och Formel 1:s silly season</span></li>
-      <li><a class="jump" href="#kultur">Kultur &amp; medier: AI-bakslaget</a><span class="desc">Kulturdebatt, recensioner och frågan om AI-bolagens ansvar</span></li>
-      <li><a class="jump" href="#miljo">Miljö &amp; klimat: Värmerekord och tekniklöften</a><span class="desc">WMO:s varning och kapplöpningen om klimatteknik</span></li>
-      <li><a class="jump" href="#ledarsidorna">Ledarsidorna: vad tycker opinionsbildarna?</a><span class="desc">DN, SvD, Aftonbladet och Expressen jämförda</span></li>
-      <li><a class="jump" href="#kulturdebatt">Kulturdebatt: AI-bakslaget och samtidsfrågorna</a><span class="desc">Vad Sveriges kulturskribenter skriver om just nu</span></li>
-      <li><a class="jump" href="#kulturrecensioner">Kultur: recensioner, boktips och dagens skiva</a><span class="desc">Opera, musik och böcker &ndash; vad kritikerna tycker just nu</span></li>
-      <li><a class="jump" href="#stockholmkultur">Kulturevenemang i Stockholm</a><span class="desc">En tät augustimånad av konserter, festival och idrott</span></li>
-      <li><a class="jump" href="#mat">Mat &amp; dryck: sommarens smaker och krogscenen</a><span class="desc">Recept, vintips och debatten om hårda krogrecensioner</span></li>
-      <li><a class="jump" href="#filosofipsykologi">Filosofi &amp; psykologi: fri eller formad?</a><span class="desc">Simone de Beauvoir och B.F. Skinner om människans natur</span></li>
-      <li><a class="jump" href="#forskning">Forskning &amp; framsteg: batterier, cancertest och cybersäkerhet</a><span class="desc">Veckans viktigaste tekniska och vetenskapliga genombrott</span></li>
-    </ol>
-  </nav>
-
-  <section class="card" id="utrikes">
-    <span class="tag">Utrikes &middot; Fördjupning</span>
-    <h2 class="section-title">Mellanöstern och Ukraina: en vecka av skör de-eskalering</h2>
-    <div class="dateline">Veckan 28 juli &ndash; 3 augusti 2026</div>
-
-    <h3 class="paper">Iran och Hormuzsundet: från attackhot till förhandlingsbord</h3>
-    <p>Veckan inleddes med USA och Israel på väg att inleda en av de hårdaste bombkampanjerna hittills mot iransk energiinfrastruktur - en eskalering som byggde vidare på de "major combat operations" Trump inledde mot Iran redan i slutet av februari. I stället svängde läget dramatiskt: på lördagen meddelade Trump att attacken var inställd i väntan på ett avtal som skulle innebära full öppning av Hormuzsundet, och på söndagen bekräftade han att den var helt avblåst. Utrikesminister Marco Rubio gick ett steg längre och sa att Iran nu är "mer berett" att förhandla om både kärnprogrammet och sjöfarten genom sundet, med nya samtal inplanerade till måndagen.</p>
-    <p>Bakom kulisserna spelade regional diplomati sannolikt en roll: enligt CNN ska Trump ha talat med den saudiske kronprinsen, som uttryckte oro över konsekvenserna av nya amerikanska attacker. Iran självt har dock hela veckan varit försiktigt i sina egna uttalanden - utrikesminister Abbas Araghchi varnade USA för "äventyrliga handlingar" även efter att attacken ställts in, vilket tyder på att Teheran fortfarande betraktar det amerikanska agerandet med misstro snarare än som en ren förhandlingsöppning.</p>
-
-    <h3 class="paper">Gaza: Hamas fredsplan möter israeliskt tvivel</h3>
-    <p>Parallellt med Iran-spåret rörde sig Gaza-frågan i otakt med sig själv. Hamas gick under veckan med på ett utkast till fredsplan som innebär avväpning mot ett gradvis israeliskt tillbakadragande - ett genombrott efter månader av stillastående förhandlingar. Men Israel har ännu inte formellt behandlat eller godkänt planen, och enligt uppgift har man delat "allvarliga säkerhetsbetänkligheter" med Washington om just avväpningsupplägget. Samtidigt fortsatte israeliska attacker över Gaza genom hela veckan - Haaretz rapporterade om minst sex dödade, däribland ett barn, i en ny våg anfall så sent som under helgen.</p>
-    <p>Kombinationen är svår att tolka entydigt: ett diplomatiskt genombrott på pappret, men fortsatta dödsoffer på marken. Det säger något om hur Gaza-konflikten skiljer sig från Iran-spåret - där de politiska ledarnas retorik snabbt kan svänga mellan konfrontation och förhandling, är händelseutvecklingen i Gaza mer trögrörlig och mindre känslig för enskilda uttalanden från Washington.</p>
-
-    <h3 class="paper">Ukraina: Kiev under eld, Ryssland under press</h3>
-    <p>Kriget i Ukraina följde under veckan sitt etablerade mönster av ömsesidig eskalering utan avgörande. Natten mot den 1 augusti genomförde Ryssland en av krigets mest omfattande enskilda attacker mot Kiev - omkring 35 robotar och nära 190 drönare, minst nio döda och 40 skadade. Ukraina svarade dagen efter med egna långdistansslag mot ryskt territorium, mot bland annat flygvapenbasen i Engels och oljeraffinaderiet i Saratov, och avslutade veckan med drönarattacker som satte eld på ett lager i Ryssland och dödade minst fem personer.</p>
-    <p>Det som sticker ut mest är förlustsiffrorna: enligt ukrainska uppgifter blev juli en av krigets dyraste månader för Ryssland i mänskliga termer, med 42 860 dödade och sårade soldater under en enda månad. Ändå visar veckans stora Kiev-attack att Ryssland fortfarande har kapacitet att genomföra massiva, samordnade insatser - en påminnelse om att tunga förlustsiffror inte automatiskt översätts till minskad slagkraft på kort sikt.</p>
-
-    <div class="analys-box">
-      <strong class="lead">Analys:</strong> Veckans mönster i både Mellanöstern och Ukraina är detsamma: diplomatiska öppningar som inte matchas av motsvarande förändring på marken. Iran-spåret har gått från vagt "nära förestående avtal" till ett konkret, datumsatt möte - den tydligaste konkretiseringen på länge - men utan att Iran självt bekräftat någon eftergift. Gaza-planen är godkänd av Hamas men inte av Israel, och strider pågår fortfarande. Och i Ukraina fortsätter båda sidor att eskalera trots (eller kanske på grund av) att ingendera bedömer sig ha råd att blinka först. Slutsatsen för veckan som helhet: fler diplomatiska rörelser än på länge, men ingen av de tre konflikterna är närmare en faktisk lösning än de var för sju dagar sedan.
-    </div>
-    <div class="sources">Källor: <a href="https://abcnews.com/International/live-updates/iran-live-updates-tehran-progress-made-strait-hormuz/?id=135110405" target="_blank" rel="noopener">ABC News</a>, <a href="https://www.cnn.com/2026/08/02/world/live-news/iran-war-trump" target="_blank" rel="noopener">CNN</a>, <a href="https://www.aljazeera.com/news/liveblog/2026/7/31/iran-war-live-trump-says-hamas-to-disarm-israel-to-leave-gaza-gradually" target="_blank" rel="noopener">Al Jazeera</a>, <a href="https://www.haaretz.com/" target="_blank" rel="noopener">Haaretz</a>, <a href="https://www.npr.org/2026/07/30/g-s1-136276/russia-ukraine-war" target="_blank" rel="noopener">NPR</a>, <a href="https://www.ukrinform.net/rubric-ato" target="_blank" rel="noopener">Ukrinform</a>, <a href="https://kyivindependent.com/" target="_blank" rel="noopener">Kyiv Independent</a></div>
-  </section>
-
-  <section class="card" id="sverige">
-    <span class="tag">Sverige &amp; politik &middot; Fördjupning</span>
-    <h2 class="section-title">Valrörelsens sista skede: 42 dagar kvar</h2>
-    <div class="dateline">Veckan 28 juli &ndash; 3 augusti 2026</div>
-
-    <h3 class="paper">Opinionsläget: SD faller, S håller emot</h3>
-    <p>Veckans opinionsmätningar bekräftar en trend som byggts upp under sommaren: Sverigedemokraterna tappar mark samtidigt som Socialdemokraterna håller emot bättre än väntat. PolitPros sammanvägning från 2 augusti gav S 32,1%, SD 19,9% och M 17,2%, med regeringspartierna (M, KD, L) tillsammans på 44,4% av mandaten - 42 dagar innan valdagen 13 september. Bilden är dock inte helt entydig: Novus mätning från senare i juli gav en högre SD-siffra (20,4%) och ett lägre S (31,8%), medan Nordisk Opinions julibarometer visade SD ner hela 4,4 enheter till 19,1% och S under 30% för första gången i mätserien. Spridningen mellan instituten är ovanligt stor för årstiden, vilket i sig är en nyhet - opinionsläget är mer volatilt nu än på länge.</p>
-
-    <h3 class="paper">Tidöspänningar och sakfrågorna som avgör valet</h3>
-    <p>Under ytan på siffrorna ligger en mer strukturell osäkerhet: kommer Sverigedemokraterna fortsätta nöja sig med rollen som stödparti utan regeringsposter, eller kräver partiet mer inflytande i en eventuell ny mandatperiod - särskilt nu när M:s egna siffror stärkts relativt SD:s inom blocket? Novus återkommande mätning av "viktigaste politiska frågan" visar att sjukvård och skola toppar listan, följt av lag och ordning, medan försvarsfrågan - som växte kraftigt i vikt under vintern - fallit tillbaka något. Det betyder att valrörelsens tyngdpunkt i praktiken ligger på välfärdsfrågor snarare än på kriget i Ukraina eller Mellanöstern, trots att båda dominerar utrikesbevakningen.</p>
-    <p>Veckans svenska ledarsidor speglade en bredd av teman snarare än ett enskilt dominerande ämne: DN:s Max Hjelm kallade mandatperioden en "floppe" för Tidöpartierna, Expressens Ylva Nilsson kritiserade EU:s hantering av migrantkrisen i Ceuta som ett tecken på "EU:s stora svaghet", och flera ledarskribenter återkom till frågan om Sveriges beredskap i skuggan av krigen i Europa och Mellanöstern.</p>
-
-    <h3 class="paper">Lokalt: Nacka och Stockholm</h3>
-    <p>Lokalt i Nacka dominerades veckan av mer administrativa nyheter snarare än dramatik: en ny klimat- och miljödirektör (Katja Awiti) tillträder 10 augusti, ett nytt passersystem för återvinningscentraler införs samma dag, och samtliga 26 kommunala badplatser har nu toppklassning. I Stockholm har augusti inletts med ett tätt evenemangsprogram - EuroBasket för damer på Kistamässan, förberedelser inför seglings-VM på Riddarfjärden och Stockholms kulturfestival senare i månaden.</p>
-
-    <div class="analys-box">
-      <strong class="lead">Analys:</strong> Det mest talande med veckans svenska nyheter är kanske inte någon enskild händelse, utan just spridningen mellan opinionsinstituten - ett tecken på att väljarkåren är mer rörlig än den varit på länge, bara sex veckor före valet. Att SD:s tapp är den mest konsekventa iakttagelsen över flera institut, samtidigt som S håller sig kvar över 30% i de flesta mätningar, pekar mot ett val där båda blockens interna balans (M vs. SD respektive S vs. V/MP/C) kan bli minst lika avgörande som själva blockskillnaden. Det är också värt att notera hur lite själva sakfrågedebatten ännu handlar om de stora krigen internationellt - trots att de dominerar nyhetsflödet i övrigt, är det välfärden som styr det svenska valet.
-    </div>
-    <div class="sources">Källor: <a href="https://politpro.eu/en/sweden" target="_blank" rel="noopener">PolitPro</a>, <a href="https://novus.se/" target="_blank" rel="noopener">Novus</a>, <a href="https://nordiskopinion.se/" target="_blank" rel="noopener">Nordisk Opinion</a>, <a href="https://www.dn.se/ledare/" target="_blank" rel="noopener">DN</a>, <a href="https://www.expressen.se/ledare/" target="_blank" rel="noopener">Expressen</a>, <a href="https://www.nacka.se/" target="_blank" rel="noopener">Nacka kommun</a>, <a href="https://www.visitstockholm.se/" target="_blank" rel="noopener">Visit Stockholm</a></div>
-  </section>
-
-  <section class="card" id="ekonomi">
-    <span class="tag">Ekonomi &middot; Fördjupning</span>
-    <h2 class="section-title">Inflationen vänder upp, Fed väntar och AI-branschen mognar</h2>
-    <div class="dateline">Veckan 28 juli &ndash; 3 augusti 2026</div>
-
-    <h3 class="paper">Eurozonen: inflationen accelererar igen</h3>
-    <p>Efter vårens gradvisa nedgång vände eurozonens inflation upp under veckan - 2,9% i juli, jämfört med 2,8% i juni. Uppgången drevs nästan helt av energipriser (10,0%, upp från 8,5%) i takt med att spänningarna mellan USA och Iran blossade upp igen inför helgens attackhot. Kärninflationen steg till 2,5% och tjänsteinflationen till 3,3% - båda klart över ECB:s tvåprocentsmål. ECB har redan skruvat upp sina egna prognoser för året och kopplar uttryckligen upprevideringen till kriget i Mellanöstern, samtidigt som tillväxtprognosen skrivits ned. Det är ett tydligt exempel på hur direkt kopplad europeisk penningpolitik numera är till händelseutvecklingen i en helt annan del av världen.</p>
-
-    <h3 class="paper">Fed håller emot trots tre avvikande röster</h3>
-    <p>Amerikanska Federal Reserve höll räntan oförändrad i intervallet 3,50-3,75% vid sitt julimöte - men beslutet var långt ifrån enhälligt. Tre regionala Fed-chefer röstade emot och ville se en höjning, med motiveringen att inflationen legat över målet i över fem år. Den nye ordföranden Kevin Warsh - känd för att medvetet ge marknaden färre tydliga signaler om nästa drag - beskrev beslutet inte som en paus utan som "en noggrann genomgång av det ekonomiska läget", och underströk att Fed "inte kommer att tveka att agera" för att nå prisstabilitet. Den ovanligt höga osäkerheten kring Feds nästa steg speglar dels Warshs egen kommunikationsstil, dels en verklig oenighet inom komitén om hur allvarligt den ihållande inflationen ska vägas mot tecken på avmattning i ekonomin.</p>
-
-    <h3 class="paper">AI-branschen: från chattbots till forskningsgenombrott</h3>
-    <p>På bolagsnivå fortsatte AI-branschen sin snabba utveckling under veckan, men med en tydlig förskjutning i fokus. OpenAI meddelade att en intern version av bolagets kommande flaggskeppsmodell löst tio tidigare olösta problem inom matematik och teoretisk datavetenskap - för endast omkring 2 000 dollar i beräkningskraft - och publicerat formella bevis som verifierar resultaten. Samtidigt fortsatte den kinesiska konkurrenten DeepSeek att pressa priserna med sin nya V4 Flash-modell. Branschanalytiker beskriver en bredare trend där köparnas intresse flyttas bort från uppseendeväckande chattdemos mot verktyg som faktiskt löser konkreta uppgifter snabbare - en mognadsprocess som återspeglas i att flera bolag samtidigt stramar åt sina AI-budgetar för att fokusera på mätbar avkastning snarare än ren experimentlusta.</p>
-
-    <div class="analys-box">
-      <strong class="lead">Analys:</strong> Veckans ekonominyheter binds samman av en gemensam tråd: penningpolitiken på båda sidor Atlanten dras i olika riktningar av krafter den inte kan kontrollera. ECB:s uppreviderade inflationsprognos är i praktiken en direkt konsekvens av krigsrisken i Mellanöstern, medan Feds interna splittring handlar mer om inhemsk, ihållande inflation som redan varat i över fem år. Att båda centralbankerna samtidigt balanserar mellan att bekämpa inflation och undvika att strypa en redan bräcklig tillväxt, mitt i en period av snabb teknologisk omvälvning inom AI, gör penningpolitiken ovanligt svårförutsägbar inför hösten - en osäkerhet som Kevin Warshs medvetet otydliga kommunikationsstil snarast förstärker än dämpar.
-    </div>
-    <div class="sources">Källor: <a href="https://tradingeconomics.com/euro-area/inflation-cpi" target="_blank" rel="noopener">Trading Economics</a>, <a href="https://www.ecb.europa.eu/" target="_blank" rel="noopener">ECB</a>, <a href="https://www.cnbc.com/2026/07/29/fed-rate-decision-july-2026.html" target="_blank" rel="noopener">CNBC</a>, <a href="https://www.pbs.org/newshour/economy/watch-live-fed-chair-warsh-holds-news-conference-after-latest-interest-rate-decision" target="_blank" rel="noopener">PBS News</a>, <a href="https://www.buildfastwithai.com/blogs/ai-news-today-august-2-2026" target="_blank" rel="noopener">BuildFastWithAI</a>, <a href="https://aitoolsrecap.com/Blog/AINewsaugust2026.aspx" target="_blank" rel="noopener">AI Tools Recap</a></div>
-  </section>
-
-  <section class="card" id="sport">
-    <span class="tag">Sport &middot; Fördjupning</span>
-    <h2 class="section-title">Guimarães-affären och medaljkampen</h2>
-    <div class="dateline">Veckan 28 juli &ndash; 3 augusti 2026</div>
-
-    <h3 class="paper">Djurgården: medaljstrid inför Västerås-mötet</h3>
-    <p>Djurgården gick in i veckans avslutande omgång på fjärde plats i Allsvenskan, med en 1-0-vinst borta mot Degerfors som senaste resultat - ett mål av Bo Hegland efter en assist av Hampus Findell, trots att Degerfors dominerade bollinnehavet. Klubben stärkte samtidigt truppen genom att hämta målvakten Lukas Jonsson från VfL Osnabrück, medan mittfältaren Mattias Siltanen, 19, uppges vara het på transfermarknaden med bud från både Toulouse och Lyon. Söndagens hemmamatch mot nykomlingen Västerås SK, som ligger strax bakom på femteplats, blir en direkt duell om medaljplatserna - med IK Sirius fortsatt klart ledande i toppen av tabellen.</p>
-
-    <h3 class="paper">Arsenal: Guimarães klar för medicinsk kontroll</h3>
-    <p>Veckans stora affär inom europeisk fotboll var Arsenals jakt på Newcastles kapten Bruno Guimarães. Efter att Gunners två tidigare bud (70 och 80 miljoner euro) refuserats nådde klubbarna till slut en principöverenskommelse kring 90 miljoner euro, och enligt de senaste uppgifterna är en medicinsk undersökning inbokad till måndagen - ett tydligt tecken på att affären, värd omkring 80 miljoner pund, går mot sin slutfas med ett femårskontrakt för den brasilianske mittfältaren. Samtidigt fortsatte Arsenal städa i truppen: Christos Tzolis anslöt från Club Brugge, medan Leandro Trossard, Jakub Kiwior, Piero Hincapié och flera andra lämnat klubben inför en säsong med dubbla fronter i Premier League och Champions League.</p>
-
-    <h3 class="paper">Golf och Formel 1: slutspel och silly season</h3>
-    <p>Inom golfen går PGA Tour in i FedExCup-slutspelet, där Ludvig Åberg klättrat till toppskiktet av ställningen inför den första deltävlingen i Memphis (12-16 augusti). Inom Formel 1 dominerades veckan av förarmarknaden inför 2027 - Max Verstappens prestandaklausul (han måste ligga topp 2 vid sommaruppehållet, men ligger på P7) har satt fart på spekulationer om ett sabbatsår med bibehållen lön, medan endast fem förare hittills är helt säkrade för nästa säsong.</p>
-
-    <div class="analys-box">
-      <strong class="lead">Analys:</strong> Sportveckan illustrerar hur transferfönstrets sista veckor koncentrerar affärer som förhandlats i månader - Guimarães-sagan gick från "intensifierade samtal" till inbokad medicinsk kontroll på bara några dagar, ett mönster som brukar upprepa sig när deadline (1 september) närmar sig. För Djurgården är söndagens match mer avgörande än den kan verka: ett tapp mot Västerås skulle inte bara kosta poäng utan också släppa in en direkt konkurrent om medaljplatserna på samma höjd i tabellen - medan en vinst skulle befästa fjärdeplatsen med marginal inför höstens avgörande omgångar.
-    </div>
-    <div class="sources">Källor: <a href="https://sports.yahoo.com/articles/newcastle-united-star-bruno-guimaraes-184000591.html" target="_blank" rel="noopener">Yahoo Sports</a>, <a href="https://www.caughtoffside.com/2026/08/03/medical-scheduled-arsenal-make-breakthrough-brazilian/" target="_blank" rel="noopener">CaughtOffside</a>, <a href="https://www.svenskfotboll.se/serier-cuper/tabell-och-resultat/allsvenskan-2026/133348/" target="_blank" rel="noopener">Svensk Fotboll</a>, <a href="https://www.pgatour.com/" target="_blank" rel="noopener">PGA Tour</a>, <a href="https://www.formula1.com/" target="_blank" rel="noopener">Formula1.com</a></div>
-  </section>
-
-  <section class="card" id="kultur">
-    <span class="tag">Kultur &amp; medier &middot; Fördjupning</span>
-    <h2 class="section-title">AI-bakslaget och sommarens kulturdebatt</h2>
-    <div class="dateline">Veckan 28 juli &ndash; 3 augusti 2026</div>
-
-    <h3 class="paper">Kulturdebatt: AI-bolagens backlash</h3>
-    <p>En återkommande tråd i veckans DN Kultur var frågan om AI-bolagens makt och ansvar - Martin Gelin skrev om vad han kallar en begynnande "global backlash mot AI-företagen", ett tema som löper parallellt med veckans AI-säkerhetsnyheter (se Ekonomi). Samtidigt debatterades mer traditionella kulturfrågor: Fanna Ndow Norrbys kolumn om vitt snus väckte reaktioner, och Johannes Klenell kritiserade Liberalernas förhållande till SD i en krönika som band ihop kultur- och politikdebatten.</p>
-
-    <h3 class="paper">Recensioner: opera, musik och böcker</h3>
-    <p>På recensionssidan dominerade sommarens scenprogram - DN:s recensent lyfte fram Monteverdis "Poppeas kröning" för sin sensuella dramatik, medan Ariana Grandes nya album fick ett mer avvaktande mottagande ("habilt men tar inga risker"). Inom litteraturen uppmärksammades bland annat en spökroman och en poesisamling, och Kristina Lindquist rekommenderade fem böcker för "en ensam sommar" - allt mot bakgrund av att litteraturfestivalen på Österlen samlat författare och läsare för samtal om läsningens roll i en tid av digital distraktion.</p>
-
-    <h3 class="paper">Mediedebatt: public service och ungas AI-relationer</h3>
-    <p>Den svenska mediedebatten kretsade under veckan kring det pågående arbetet med public service-uppdraget för perioden 2026-2033, där folkbildning och journalistik lyfts som en uttalad prioritet. Parallellt har Mediemyndigheten undersökt ungas syn på "artificiella relationer" - AI-chattbotar som används för samtal och socialt stöd - en fråga som fått ny skärpa i ljuset av veckans AI-säkerhetsincidenter och den bredare debatten om AI-bolagens transparens.</p>
-
-    <div class="analys-box">
-      <strong class="lead">Analys:</strong> Det är slående hur mycket av veckans kulturbevakning - från Gelins essä om AI-backlash till mediedebatten om ungas artificiella relationer - kretsar kring samma underliggande fråga som dominerar ekonomi- och tekniknyheterna: hur mycket makt och förtroende ska ges till AI-system och de bolag som bygger dem. Kultursidorna fungerar här som en plats där den mer tekniska debatten (som förs på ekonomi- och tekniksidorna) omsätts till frågor om identitet, relationer och vad som gör mänsklig kontakt värdefull - ett tecken på att AI-frågan under 2026 spridit sig långt bortom de rent tekniska och ekonomiska sammanhangen.
-    </div>
-    <div class="sources">Källor: <a href="https://www.dn.se/kultur/" target="_blank" rel="noopener">DN Kultur</a>, <a href="https://mprt.se/" target="_blank" rel="noopener">Mediemyndigheten</a>, <a href="https://www.regeringen.se/" target="_blank" rel="noopener">Regeringen.se</a></div>
-  </section>
-
-  <section class="card" id="miljo">
-    <span class="tag">Miljö &amp; klimat &middot; Fördjupning</span>
-    <h2 class="section-title">Värmerekord och tekniklöften</h2>
-    <div class="dateline">Veckan 28 juli &ndash; 3 augusti 2026</div>
-
-    <h3 class="paper">Global uppvärmning: WMO:s varning</h3>
-    <p>FN:s väderorgan WMO upprepade under veckan sin varning om att världen går in i en ny period av extremvärme - med 86% sannolikhet att minst ett av åren 2026-2030 slår rekordet från 2024 som varmaste året uppmätt. Den tidigare Nasa-forskaren James Hansen upprepade sin bedömning att 2026 sannolikt blir det varmaste året hittills, trots att det inleddes svalare än 2024. En ljuspunkt: tio år efter Parisavtalet har prognosen för global uppvärmning förbättrats från cirka 4 grader till dagens 2,8 grader - ett framsteg, men fortfarande långt över 1,5-gradersmålet.</p>
-
-    <h3 class="paper">Europas värmebölja i efterhand</h3>
-    <p>En attributionsstudie från World Weather Attribution publicerad under sommaren visade att junis värmebölja i Europa - med temperaturer på 40 grader i Frankrike, Portugal och Spanien - hade varit "praktiskt taget omöjlig" för 50 år sedan. Franska hälsomyndigheten har sedan dess fördubblat sin skattning av överdödlighet kopplad till värmen, från 1 000 till över 2 000 personer - en påminnelse om att klimatförändringens hälsokonsekvenser ofta blir tydliga först i efterhand, när dödssiffrorna räknas samman.</p>
-
-    <h3 class="paper">Klimatteknik: från perovskit till DAC</h3>
-    <p>På teknikfronten fortsatte flera parallella spår att utvecklas: perovskit-solceller närmar sig verkningsgrader på 40% i laboratoriemiljö, forskare vid Luleå tekniska universitet har utvecklat ett vätskesystem som fångar in över 97% av koldioxiden i rökgaser, och branschen för direkt luftinfångning (DAC) beskrivs ha gått från "laboratoriecuriosum till infrastrukturverklighet" - även om kostnaden per infångat ton fortfarande är hög och behöver falla kraftigt för att bli storskaligt lönsam.</p>
-
-    <div class="analys-box">
-      <strong class="lead">Analys:</strong> Veckans klimatnyheter fångar den grundläggande spänningen i klimatfrågan just nu: samtidigt som uppvärmningsprognoserna gradvis förbättras tack vare politiska och tekniska framsteg, blir de konkreta konsekvenserna - värmeböljor, överdödlighet, extremväder - alltmer påtagliga i närtid. Teknikutvecklingen inom allt från solceller till koldioxidinfångning ger skäl till försiktig optimism på längre sikt, men den hjälper inte de tusentals människor som redan drabbats av sommarens värmeböljor. Frågan för hösten blir om de tekniska genombrotten kan skalas upp snabbare än de klimatrelaterade riskerna hinner materialiseras.
-    </div>
-    <div class="sources">Källor: <a href="https://www.carbonbrief.org/" target="_blank" rel="noopener">Carbon Brief</a>, <a href="https://insideclimatenews.org/" target="_blank" rel="noopener">Inside Climate News</a>, <a href="https://news.un.org/" target="_blank" rel="noopener">UN News</a>, <a href="https://www.ltu.se/" target="_blank" rel="noopener">Luleå tekniska universitet</a>, <a href="https://www.realtid.se/" target="_blank" rel="noopener">Realtid</a></div>
-  </section>
-
-  <section class="card" id="ledarsidorna">
-    <span class="tag">Opinion &middot; Fördjupning</span>
-    <h2 class="section-title">Ledarsidorna: vad tycker Sveriges opinionsbildare just nu?</h2>
-    <div class="dateline">Veckan 28 juli &ndash; 3 augusti 2026</div>
-
-    <h3 class="paper">DN: en valrörelse utan tydlig vinnare</h3>
-    <p>Dagens Nyheters ledarsida ägnade veckan huvudsakligen åt den svenska valrörelsen, men utan någon enskild dramatisk händelse att samlas kring. Max Hjelm konstaterade att "det blir en underlig valrörelse i år" och beskrev mandatperioden som en "floppe" för Tidöpartierna - en formulering som säger något om hur DN:s ledarredaktion ser på regeringsunderlagets samlade facit inför valet. Viktor Karlsson valde ett mer konkret spår och varnade för hotet mot dricksvattenkvaliteten, medan Lilian Sjölund lyfte fram en strukturell demokratifråga: att riksdagen varken har plats för de allra yngsta eller de allra äldsta väljargrupperna. Tre texter, tre helt olika register - men alla förenade av ett underliggande tema om institutioner som inte riktigt hänger med sin tid.</p>
-
-    <h3 class="paper">SvD, Aftonbladet och Expressen: spretande dagordningar</h3>
-    <p>Om DN sökte sig mot strukturfrågor var de övriga tidningarnas ledarsidor mer händelsestyrda. SvD:s ledarredaktion knöt ihop veckans blandade nyhetsflöde - från Sanchez hantering av Ceuta-krisen till det uppmärksammade förslaget om en ministerpost för debattören Daniel Suhonen - i en text som mest liknade en kommenterande krönika. Aftonbladets Lina Stenberg skrev inför Prideveckan om varför det nyinrättade hatbrottsrådet är "livsviktigt" mot bakgrund av terrordådet i Berlin, en tydligt vänsterorienterad säkerhetsvinkel på hbtqi-frågan. Expressen var den tidning som gick hårdast fram politiskt: Ylva Nilsson kallade Ceuta-krisen ett bevis på "EU:s stora svaghet", Patrik Kronqvist menade att "Estland har fattat det som Sverige missar" i säkerhetspolitiken, och en fristående ledartext hävdade rakt av att "Socialdemokraterna hotar rikets säkerhet". Den sistnämnda rubriken fångar väl den skarpa, ibland pamflettartade tonen som präglar Expressens linje jämfört med de andra tre tidningarna denna vecka.</p>
-
-    <h3 class="paper">Vad ledarsidorna inte skriver om</h3>
-    <p>Minst lika intressant som vad som skrevs är vad som lyste med sin frånvaro. Trots att veckans mest dramatiska internationella händelser rörde Iran och Hormuzsundet (se Utrikes) ägnade ingen av de fyra tidningarnas ledarsidor en egen text åt den frågan denna vecka - Mellanöstern figurerade bara indirekt, via debatten om Sveriges säkerhetspolitiska beredskap. På samma sätt var AI-branschens snabba utveckling (se Ekonomi) helt frånvarande från ledarsidorna, trots att frågan diskuterades desto flitigare på kultursidorna (se Kulturdebatt nedan). Det säger något om hur svenska ledarsidor även i en internationellt orolig tid tenderar att prioritera inrikespolitik och valrörelsen framför de stora utrikes- och teknikfrågorna - ett mönster som sannolikt förstärks ju närmare valdagen 13 september kommer.</p>
-
-    <div class="analys-box">
-      <strong class="lead">Analys:</strong> Ställer man de fyra ledarsidorna sida vid sida framträder en tydlig skiljelinje: DN söker analytiskt avstånd och strukturella förklaringar, medan Expressen odlar en mer konfrontativ, säkerhetspolitiskt tillspetsad ton riktad mot Socialdemokraterna. SvD och Aftonbladet hamnar däremellan, men med respektive tidnings sedvanliga slagsida - SvD mer sammanfattande och kommenterande, Aftonbladet mer värderingsdrivet och rättighetsorienterat. Det mest talande draget är ändå frånvaron: att varken Iran-krisen eller AI-utvecklingen fick någon egen ledartext denna vecka, trots att båda dominerade nyhetsflödet i övrigt, visar hur starkt valrörelsen redan absorberat den svenska opinionsbildningens uppmärksamhet - 42 dagar före valdagen.
-    </div>
-    <div class="sources">Källor: <a href="https://www.dn.se/ledare/" target="_blank" rel="noopener">DN</a>, <a href="https://www.svd.se/ledare" target="_blank" rel="noopener">SvD</a>, <a href="https://www.aftonbladet.se/ledare" target="_blank" rel="noopener">Aftonbladet</a>, <a href="https://www.expressen.se/ledare/" target="_blank" rel="noopener">Expressen</a></div>
-  </section>
-
-  <section class="card" id="kulturdebatt">
-    <span class="tag">Kultur &middot; Fördjupning</span>
-    <h2 class="section-title">Kulturdebatt: AI-bakslaget och samtidsfrågorna</h2>
-    <div class="dateline">Veckan 28 juli &ndash; 3 augusti 2026</div>
-
-    <h3 class="paper">AI-bolagens makt sätts under lupp</h3>
-    <p>Den mest genomgående tråden i veckans kulturdebatt var frågan om AI-bolagens makt och ansvar. DN Kultur-skribenten Martin Gelin beskrev i en uppmärksammad essä vad han kallar en begynnande "global backlash mot AI-företagen" - en förskjutning i det offentliga samtalet från fascination till oro, där allt fler röster ifrågasätter om de stora teknikbolagen tar tillräckligt ansvar för konsekvenserna av sin egen teknik. Det är talande att detta kulturessätema löper parallellt med, men helt separat från, veckans mer tekniska AI-nyheter på ekonomisidorna (se Ekonomi) - kultursidorna fångar här upp en oro som ännu inte riktigt satt sig i den politiska debatten.</p>
-
-    <h3 class="paper">Personliga kolumner och samtidsfrågor</h3>
-    <p>Vid sidan av AI-frågan innehöll veckans kulturdebatt flera mer personligt hållna texter som ändå berörde bredare samtidsströmningar. Fanna Ndow Norrbys kolumn om vitt snus väckte starka reaktioner och togs av flera läsare som en kommentar om klass och identitet snarare än enbart om nikotinbruk. Johannes Klenell riktade i en krönika skarp kritik mot Liberalernas förhållande till Sverigedemokraterna - en text som medvetet suddade ut gränsen mellan kulturkrönika och politisk ledarartikel, och som därmed illustrerar hur svårt det numera är att hålla kultur- och politikjournalistik strikt isär i svensk dagspress.</p>
-
-    <h3 class="paper">Kultur möter mediedebatt: public service och ungas AI-relationer</h3>
-    <p>Den bredare mediedebatten under veckan kretsade dels kring det pågående arbetet med public service-uppdraget för perioden 2026-2033, där folkbildning och oberoende journalistik lyfts fram som en uttalad prioritet inför den politiska hanteringen i höst, dels kring Mediemyndighetens undersökning av ungas syn på "artificiella relationer" - AI-chattbotar som används för samtal och socialt stöd. Den senare frågan fick ny skärpa i ljuset av veckans bredare AI-säkerhetsdebatt och kopplar direkt an till Gelins tes om ett växande AI-bakslag: oron gäller inte bara vad AI-bolagen gör med data och marknadsmakt, utan också vad tekniken gör med mänskliga relationer.</p>
-
-    <div class="analys-box">
-      <strong class="lead">Analys:</strong> Det är slående hur mycket av veckans kulturdebatt - från Gelins essä om AI-backlash till Mediemyndighetens studie om ungas artificiella relationer - kretsar kring exakt samma underliggande fråga som dominerar ekonomi- och tekniknyheterna: hur mycket makt och förtroende som ska ges till AI-system och de bolag som bygger dem. Skillnaden är registret. Där ekonomisidorna mäter AI-utvecklingen i marknadsandelar och beräkningskostnad, omsätter kultursidorna samma fråga till frågor om identitet, relationer och vad som gör mänsklig kontakt värdefull. Tillsammans med Klenells sammanflätning av kultur- och partipolitik pekar veckan mot en svensk kulturdebatt som i allt högre grad fungerar som ett andra, mer existentiellt inriktat forum för frågor som annars behandlas tekniskt eller ekonomiskt på andra sidor av tidningen.
-    </div>
-    <div class="sources">Källor: <a href="https://www.dn.se/kultur/" target="_blank" rel="noopener">DN Kultur</a>, <a href="https://mprt.se/" target="_blank" rel="noopener">Mediemyndigheten</a>, <a href="https://www.regeringen.se/" target="_blank" rel="noopener">Regeringen.se</a></div>
-  </section>
-
-  <section class="card" id="kulturrecensioner">
-    <span class="tag">Kultur &middot; Fördjupning</span>
-    <h2 class="section-title">Kultur: recensioner, boktips och dagens skiva</h2>
-    <div class="dateline">Veckan 28 juli &ndash; 3 augusti 2026</div>
-
-    <h3 class="paper">Scen och musik: barock möter pop</h3>
-    <p>Sommarens recensionsflöde speglar en ovanligt bred spännvidd mellan tungt kulturarv och samtida populärmusik. DN:s recensent lyfte fram Monteverdis "Poppeas kröning" för sin sensuella dramatik och sångarnas nakna uttryck - ett av barockoperans mest moraliskt komplexa verk, där makten till slut segrar över dygden. Vid sidan av operan fick Ariana Grandes nya album ett betydligt svalare mottagande: "habil men vågar inte ta risker", enligt DN:s Sara Martinsson, som menar att skivan alltför mycket liknar Taylor Swift utan att hitta en egen identitet. På konstsidan uppmärksammades även en utställning med den brittiske figurmålaren Lucian Freud, vars köttiga måleri enligt recensenten söker ett direkt möte med betraktaren.</p>
-
-    <h3 class="paper">Böcker: spöken, poesi och en sommarlista</h3>
-    <p>Inom litteraturen dominerade en spökroman och en poesisamling veckans recensioner - båda beskrivs som säregna läsupplevelser, där poesin enligt kritikern är "starkt doftande" men "ibland uppträder i urtvättad kostym". Till det kommer Kristina Lindquists lista med fem böcker för "en ensam sommar", och litteraturfestivalen på Österlen som under sommaren samlat författare och läsare för samtal om läsningens roll i en tid av digital distraktion - ett tema som binder an till veckans bredare AI-debatt (se Kulturdebatt ovan). Bland boktipsen sticker klassikern "Beloved" av Toni Morrison ut som veckans återkommande rekommendation: en krävande men djupt gripande roman om slaveriets eftervärkningar, belönad med Pulitzerpriset och en central del av motiveringen till Morrisons Nobelpris 1993.</p>
-
-    <h3 class="paper">Dagens skiva: modal jazz som fortfarande säljer</h3>
-    <p>Veckans utvalda skiva, Miles Davis "Kind of Blue" (1959), representerar en helt annan typ av tidlöshet. Inspelad på bara två sessioner med en stjärnspäckad sextett - Davis, John Coltrane, Cannonball Adderley, Bill Evans, Paul Chambers och Jimmy Cobb - byggde skivan på enkla skalor snarare än de täta ackordscheman som dominerade dåtidens bebop, vilket gav upphov till den friare, mer melodiska stil som kom att kallas modal jazz. Resultatet är alltjämt det bästsäljande jazzalbumet genom tiderna, och dess lugna, eftertänksamma karaktär - inspelad nästan helt i ett tagningsförsök per låt - fungerar som en självklar startpunkt för den som vill upptäcka genren.</p>
-
-    <div class="analys-box">
-      <strong class="lead">Analys:</strong> Det som förenar veckans kulturrecensioner är en återkommande jämförelse mellan det tidlösa och det samtida - Monteverdi ställs indirekt mot Grande, Morrisons drygt fyrtio år gamla "Beloved" mot veckans nyutgivna spökroman, Davis 1959 mot 2026. Mönstret är tydligt: när kritikerna bedömer ny konst mot den etablerade kanonen är omdömena ofta försiktigare ("habil men vågar inte ta risker"), medan de verk som redan befäst sin plats i kulturarvet - operan, Morrison, Davis - får ett betydligt varmare mottagande. Det säger kanske mindre om själva verken än om hur svårt det är för samtida konst att bedömas på egna villkor, i realtid, utan den distans som gjort klassikerna till klassiker.
-    </div>
-    <div class="sources">Källor: <a href="https://www.dn.se/kultur/" target="_blank" rel="noopener">DN Kultur</a>, <a href="https://boktugg.se/" target="_blank" rel="noopener">Boktugg.se</a></div>
-  </section>
-
-  <section class="card" id="stockholmkultur">
-    <span class="tag">Stockholm &middot; Fördjupning</span>
-    <h2 class="section-title">Kulturevenemang i Stockholm: en tät augustimånad</h2>
-    <div class="dateline">Veckan 28 juli &ndash; 3 augusti 2026</div>
-
-    <h3 class="paper">Arenakonserter och festival</h3>
-    <p>Augusti inleds med en ovanligt tät konsertkalender i Stockholm. The Weeknd spelar tre kvällar på Strawberry Arena 8-10 augusti - sommarens enskilt största konsertserie i staden - och Veronica Maggio följer upp med en spelning på Stockholms Stadion den 22 augusti. Mitt emellan ligger Stockholms kulturfestival, som 12-16 augusti fyller gator och torg med musik, dans, konst och samtal med fri entré - ett av de få storskaliga kulturevenemangen i staden som är helt kostnadsfritt att ta del av, till skillnad från arenakonserterna.</p>
-
-    <h3 class="paper">Sport och kultur i samma veckor</h3>
-    <p>Det som gör just denna period ovanlig är hur tätt kultur- och idrottsevenemangen ligger varandra i tiden. FIBA:s ungdoms-EM i basket för damer pågår redan 1-9 augusti på Kistamässan, och seglingens VM i lagkappsegling avgörs 12-16 augusti - exakt samma dagar som kulturfestivalen - mitt på Riddarfjärden i centrala Stockholm. Löpsommaren knyts samman av Midnattsloppet på Södermalm 15 augusti och avslutas med adidas Stockholm Halvmarathon 29 augusti. Resultatet är en stad där besökare i mitten av augusti kan röra sig mellan en basketmatch, en seglingstävling och en gratis kulturfestival utan att lämna innerstaden.</p>
-
-    <h3 class="paper">Gröna Lund och säsongens löpande program</h3>
-    <p>Vid sidan av de tidsbestämda storevenemangen fortsätter Gröna Lund att erbjuda över 60 konserter under hela sommarsäsongen som en löpande del av nöjesparkens utbud - ett säsongskort ("Gröna Kortet") för 440 kronor ger tillgång till hela sommarens program och fungerar som ett billigare alternativ till enskilda arenabiljetter för den som vill se flera artister under samma sommar.</p>
-
-    <div class="analys-box">
-      <strong class="lead">Analys:</strong> Stockholms kulturkalender för augusti 2026 sticker ut genom sin koncentration - istället för att sprida ut de stora evenemangen över sommaren har flera av säsongens höjdpunkter, från seglings-VM till kulturfestivalen, hamnat i exakt samma tvåveckorsfönster i mitten av månaden. Det skapar sannolikt ett högtryck för besöksnäringen under just de dagarna, men innebär också att den som vill uppleva bredden i stadens kulturutbud behöver planera medvetet - och att de kostnadsfria evenemangen (kulturfestivalen, Midnattsloppet som publikupplevelse) konkurrerar om samma uppmärksamhet som de betalande storkonserterna.
-    </div>
-    <div class="sources">Källor: <a href="https://www.visitstockholm.se/se-gora/aktiviteter/hander-i-stockholm/" target="_blank" rel="noopener">Visit Stockholm</a>, <a href="https://www.gronalund.com/" target="_blank" rel="noopener">Gröna Lund</a></div>
-  </section>
-
-  <section class="card" id="mat">
-    <span class="tag">Mat &amp; dryck &middot; Fördjupning</span>
-    <h2 class="section-title">Mat &amp; dryck: sommarens smaker och krogscenen</h2>
-    <div class="dateline">Veckan 28 juli &ndash; 3 augusti 2026</div>
-
-    <h3 class="paper">Säsongens recept: enkelt, kryddigt och gjort i förväg</h3>
-    <p>Sommarens matrecept följer i år ett tydligt mönster mot enkelhet och förberedelse. ICA:s uppdaterade sommarrecept lyfter fram grillad kyckling med gingernudlar och sriracha-majonnäs - nudlar marinerade i ingefära, koriander, lime, gurka, chili och sesamolja, serverade med grillade kycklinglår - som en frisk, kryddig helgrätt, medan grillad korv med ljummen potatissallad (potatis i en dressing av citronsaft, olivolja, senap och socker) representerar den mer klassiska, snabblagade linjen med hela rätten klar på under 45 minuter. Genomgående rekommenderas att koka potatis, ägg eller såser i förväg och förvara kallt - ett tips som återkommer i flera recept och säger något om hur sommarens matlagning premierar tid utomhus framför tid i köket.</p>
-
-    <h3 class="paper">Vinhyllan: sommarens bästa köp</h3>
-    <p>På vinsidan har Wine Tables Andreas Grube gått igenom Systembolagets beställningssortiment och plockat ut sina favoriter för säsongen - en Chardonnay Brut Crémant de Bourgogne 2023 (185 kr) beskrivs som krämig och brödig med fräsch citrus, medan en Markus Molitor Riesling 2024 från Mosel (179 kr) lyfts fram som friskt och päronfruktigt. På röda sidan sticker en sydafrikansk Catherine Marshall Pinot Noir (271 kr) ut som blommig och bärig, medan en australisk Paracombe Cabernet Sauvignon 2021 (225 kr) beskrivs som "prisvärd med förvånansvärt hög klass". Utöver Grubes urval har vinexperten Gunilla Hultgren Karell testat 25 roséviner ur Systembolagets sortiment och pekar särskilt ut en AIX Provence Rosé, och Wine Table rekommenderar dessutom en torr fino-sherry (Tio Pepe En Rama) som sommarens aperitif till tapas.</p>
-
-    <h3 class="paper">Krogscenen: nyöppningar, recensionsdebatt och Michelin</h3>
-    <p>Stockholms restaurangscen har under sommaren präglats av både nyöppningar och en infekterad debatt om recensionernas tonläge. Tommy Myllymäki och Pi Le har öppnat sin första gemensamma restaurang, Liv, på Slussenterrassen, och Flor Matbar på Surbrunnsgatan har fått uppmärksamhet för sin skaldjursfokuserade meny. Samtidigt har Expressens recensionsserie "Krogkultur", skriven av Valerie Kyeyune Backström, väckt debatt efter en förödande recension under rubriken "Maten är äcklig, personalen otrevlig och inredningen ful" - branschtidningen Hotellrevyn har kritiserat formatet för att bygga breda omdömen på ett enda besök. På den mer prisade delen av skalan beskriver White Guide en måltid på Adam/Albin som "en professionell personlig prestation", men Guide Michelins 2026-utgåva gav Sverige inga nya stjärnor alls i år - till skillnad från Danmark (fem nya), Norge (tre) och Finland (en).</p>
-
-    <div class="analys-box">
-      <strong class="lead">Analys:</strong> Veckans mat- och dryckesnyheter speglar två parallella rörelser i den svenska matkulturen: en folklig, praktisk linje mot enkla, förberedbara sommarrecept och prisvärda vinfynd på Systembolaget, och en mer elitistisk linje där Stockholms finare krogar tävlar om stjärnor och recensenternas gunst. Att Sverige inte fick en enda ny Michelin-stjärna 2026, samtidigt som samtliga nordiska grannländer fick minst en, är en nyhet som sannolikt kommer diskuteras i branschen under hösten - liksom frågan om Expressens hårt tillspetsade recensionsformat är rättvist mot enskilda krogar eller om det, som Hotellrevyn antyder, bygger för mycket dömande på för lite underlag.
-    </div>
-    <div class="sources">Källor: <a href="https://www.ica.se/artikel/sommarmat/" target="_blank" rel="noopener">ICA</a>, <a href="https://www.winetable.se/artiklar/basta-sommarvinerna-att-bestalla/" target="_blank" rel="noopener">Wine Table</a>, <a href="https://www.systembolaget.se/sortiment/vin/ordervaror/" target="_blank" rel="noopener">Systembolaget</a>, <a href="https://thatsup.se/stockholm/article/expressens-krogrecension-visar-varfor-man-bor-lamna-sina-personliga-fordomar-hemma/" target="_blank" rel="noopener">Thatsup</a>, <a href="https://www.hotellrevyn.se/serveringsproffs-sagar-expressens-recensioner/" target="_blank" rel="noopener">Hotellrevyn</a>, <a href="https://whiteguide.com/se/sv/restaurants/8301-adamalbin" target="_blank" rel="noopener">White Guide</a>, <a href="https://www.koket.se/svenska-stjarnor-i-guide-michelin-2026" target="_blank" rel="noopener">Köket.se - Guide Michelin 2026</a></div>
-  </section>
-
-  <section class="card" id="filosofipsykologi">
-    <span class="tag">Filosofi &amp; psykologi &middot; Fördjupning</span>
-    <h2 class="section-title">Filosofi &amp; psykologi: fri eller formad?</h2>
-    <div class="dateline">Veckan 28 juli &ndash; 3 augusti 2026</div>
-
-    <h3 class="paper">Simone de Beauvoir: att bli kvinna</h3>
-    <p>Simone de Beauvoir (1908-1986) var en fransk filosof, författare och existentialist som tillsammans med Jean-Paul Sartre formade 1900-talets mest inflytelserika existentialistiska filosofimiljö i efterkrigstidens Paris - en av de första kvinnorna att ta studentexamen i filosofi vid Sorbonne. Hennes huvudverk "Det andra könet" (1949) bygger på tesen "man föds inte till kvinna, man blir det": kvinnlighet är enligt Beauvoir inte en biologisk essens utan en social och kulturell konstruktion, formad genom uppfostran, förväntningar och institutioner. Boken analyserar hur kvinnan historiskt gjorts till "den Andra" i förhållande till mannen som norm - ett subjekt definierat i relation till, och underordnat, det manliga subjektet. Beauvoirs distinktion mellan biologiskt kön och socialt konstruerat genus lade grunden för stora delar av den moderna genusvetenskapen och förblir en central referenspunkt i dagens debatter om jämställdhet och representation.</p>
-
-    <h3 class="paper">B.F. Skinner: beteendets arkitektur</h3>
-    <p>Burrhus Frederic Skinner (1904-1990) var en amerikansk psykolog vid Harvard och den mest inflytelserika företrädaren för den radikala behaviorismen - inriktningen som menade att psykologin bör studera observerbart beteende snarare än inre, omätbara mentala tillstånd. I sin egenbyggda forskningsapparatur, "Skinnerboxen", visade han hur beteenden formas av vad som händer efter dem: förstärkning ökar sannolikheten att ett beteende upprepas, bestraffning minskar den, och komplexa beteendemönster kan formas stegvis genom så kallad "shaping". Till skillnad från Freuds fokus på det omedvetna menade Skinner att det mesta av mänskligt beteende - språk, vanor, till och med värderingar - kan förstås som inlärda responser på miljöns förstärkningsmönster. Hans principer ligger i dag till grund för allt från modern beteendeterapi till hur appar och sociala medier medvetet designas för att med intermittent förstärkning hålla kvar användares uppmärksamhet.</p>
-
-    <h3 class="paper">Två syner på människan: fri eller formad?</h3>
-    <p>Ställda sida vid sida representerar Beauvoir och Skinner två av 1900-talets mest motsatta svar på frågan om vad som formar en människa. Beauvoirs existentialism utgår från att människan i grunden är fri - även samhälleligt konstruerade roller som "kvinnlighet" kan enligt henne ifrågasättas och omdefinieras, eftersom identitet skapas genom aktiva val i relation till omvärlden snarare än genom yttre determinering. Skinners behaviorism drar närmast motsatt slutsats: människans beteende, inklusive det som upplevs som fria val, är i grunden resultatet av inlärningshistoria och förstärkningsmönster som individen sällan är medveten om. Det är en klassisk filosofisk och psykologisk spänning - mellan frihet och determinism, mellan att bli till genom eget val och att formas av sin miljö - som fortfarande genomsyrar moderna debatter, inte minst om hur mycket ansvar enskilda individer kan hållas för beteenden som sociala medier och AI-system är medvetet designade för att förstärka.</p>
-
-    <div class="analys-box">
-      <strong class="lead">Analys:</strong> Det som gör Beauvoir och Skinner intressanta att läsa tillsammans är hur direkt deras skilda människosyner talar in i samtida frågor. Beauvoirs tanke att "kvinnlighet" är konstruerad snarare än given har blivit en standardreferens i debatter om identitet och representation, medan Skinners insikter om förstärkning numera oftast åberopas i sin mest oroande tillämpning: hur sociala medier och AI-chattbotar - se veckans mediedebatt om ungas "artificiella relationer" under Kulturdebatt ovan - utnyttjar exakt de mekanismer han beskrev för att hålla kvar användares uppmärksamhet. Frågan de tillsammans väcker är om den beauvoirianska friheten att "bli" den man vill vara fortfarande är meningsfull i en tid då så mycket av vår vardagliga uppmärksamhet formas av system byggda enligt skinneriansk logik.
-    </div>
-    <div class="sources">Källor: <a href="https://plato.stanford.edu/entries/beauvoir/" target="_blank" rel="noopener">Stanford Encyclopedia of Philosophy - Beauvoir</a>, <a href="https://www.britannica.com/biography/Simone-de-Beauvoir" target="_blank" rel="noopener">Encyclopaedia Britannica</a>, <a href="https://www.britannica.com/biography/B-F-Skinner" target="_blank" rel="noopener">Encyclopaedia Britannica - Skinner</a>, <a href="https://plato.stanford.edu/entries/behaviorism/" target="_blank" rel="noopener">Stanford Encyclopedia of Philosophy - Behaviorism</a></div>
-  </section>
-
-  <section class="card" id="forskning">
-    <span class="tag">Forskning &amp; framsteg &middot; Fördjupning</span>
-    <h2 class="section-title">Forskning &amp; framsteg: batterier, cancertest och cybersäkerhet</h2>
-    <div class="dateline">Veckan 28 juli &ndash; 3 augusti 2026</div>
-
-    <h3 class="paper">Energilagring: enkel kemitrick kan ge kraftfullare batterier</h3>
-    <p>En av veckans mer oväntade forskningsnyheter kom från batterifronten: forskare rapporterar att en förvånansvärt enkel förändring i natriumjonbatteriers kemi kan göra dem betydligt kraftfullare. Natriumjonbatterier har länge setts som ett billigare men svagare alternativ till litiumjonbatterier, eftersom natriumjoner är större och tyngre än litiumjoner. Det som gör fyndet extra intressant är att samma grundprincip - hur jonerna rör sig genom materialet - också öppnar för teknik som kan omvandla havsvatten till dricksvatten, vilket gör upptäckten relevant för både energilagring och global vattenförsörjning på en och samma gång. Parallellt har kemister vid Rice University hittat ett sätt att få neodym - en sällsynt jordartsmetall som används i permanentmagneter till bland annat elmotorer och vindkraftverk - att reagera med syre på ett sätt som tidigare ansetts osannolikt, med hjälp av en specialdesignad molekylär "korg" som positionerar atomerna rätt.</p>
-
-    <h3 class="paper">Medicin: ett blodprov för 50 cancerformer</h3>
-    <p>Inom medicinsk forskning är veckans mest lovande nyhet ett blodprov som kan upptäcka omkring 50 olika cancerformer redan innan de första symtomen visar sig - ett potentiellt genombrott för tidig diagnos, som historiskt är en av de starkaste enskilda faktorerna för överlevnad vid cancer. Samtidigt visar en fyra månader lång studie med 315 vuxna med bukfetma att förvånansvärt små doser regelbunden träning kan ge betydande hälsovinster - ett fynd som sänker tröskeln för vad som räknas som "tillräcklig" motion och kan göra livsstilsråd mer realistiska för fler. På materialsidan lyfts kombinationen av IoT-sensorer och redan existerande självläkande material fram som ett av årets viktigaste materialvetenskapliga genombrott, med potential att flytta hela industrier - från infrastruktur till konsumentelektronik - mot prediktivt underhåll snarare än reparation efter att skador redan uppstått.</p>
-
-    <h3 class="paper">Cybersäkerhet: tre incidenter på en vecka</h3>
-    <p>På säkerhetsfronten var veckan ovanligt händelserik. Fjärrhanteringsleverantören N-able bekräftade att angripare utnyttjat en autentiseringskringgång (CVE-2026-18577) i verktyget N-central för att skaffa sig fjärrstyrd administratörsåtkomst hos kunder - bolaget släppte en patchad version den 2 augusti och uppmanade kunder att uppdatera omedelbart. Samtidigt upptäcktes att angripare manipulerat en JavaScript-fil hos annonsteknikbolaget Adform och gjort om den till ett webbläsarbaserat verktyg som skriver om kryptovalutaadresser i realtid - en attack som spridit sig via flera annonsnätverk innan den upptäcktes. Det amerikanska läkemedelsbolaget Inotiv meddelade dessutom att man utsatts för en ransomware-attack där personuppgifter för 9 542 personer stulits. Tre helt olika typer av intrång - leverantörskedjeattack, annonsteknikmanipulation och rent utpressningsangrepp - inom loppet av en och samma vecka.</p>
-
-    <div class="analys-box">
-      <strong class="lead">Analys:</strong> Det gemensamma för veckans forskningsnyheter är hur ofta genombrott inom ett område visar sig ha oväntade tillämpningar inom ett helt annat - natriumbatterikemin som även kan avsalta havsvatten, självläkande material som möter sakernas internet snarare än att förbli en isolerad materialvetenskaplig kuriositet. Cybersäkerhetsnyheterna pekar samtidigt på en mindre optimistisk trend: att digital infrastruktur - fjärrhanteringsverktyg, annonsnätverk, läkemedelsbolagens system - attackeras via alltmer indirekta vägar, där leverantörer och mellanhänder blir ingångspunkten snarare än målet själv. För den som vill följa var forskningen faktiskt är på väg är kombinationen av dessa båda spår talande: samma vecka som vetenskapen tar kliv mot bättre batterier och tidigare cancerdiagnos, blir det tydligt att den digitala infrastruktur som bär upp både forskningen och vardagslivet fortsatt är sårbar på sätt som är svåra att förutse i förväg.
-    </div>
-    <div class="sources">Källor: <a href="https://www.sciencedaily.com/" target="_blank" rel="noopener">ScienceDaily</a>, <a href="https://www.cas.org/resources/cas-insights/scientific-breakthroughs-2026-emerging-trends-watch" target="_blank" rel="noopener">CAS</a>, <a href="https://gbhackers.com/weekly-cybersecurity-newsletter-july-27-august-1-2026/amp/" target="_blank" rel="noopener">GBHackers</a>, <a href="https://tech.co/news/data-breaches-updated-list" target="_blank" rel="noopener">Tech.co</a></div>
-  </section>
+  <!-- ============ STOCKHOLM ============ -->
+  <div class="tab-panel active" data-panel="stockholm">
+    <section class="card">
+      <span class="tag">Stockholm &middot; Fördjupning</span>
+      <h2 class="section-title">Stockholm: nyheter, evenemang och väder</h2>
+      <div class="dateline">Veckan 28 juli &ndash; 3 augusti 2026</div>
+
+      <h3 class="paper">Veckans viktigaste nyheter i Stockholm</h3>
+      <p>Augusti har inletts med ett ovanligt tätt program av stora publikevenemang i huvudstaden. FIBA:s ungdoms-EM i basket för damer (U18 Women's EuroBasket) pågår 1-9 augusti på Kistamässan, och förberedelserna inför seglingens VM i lagkappsegling på Riddarfjärden - som avgörs 12-16 augusti mitt i city - är i full gång. Löpsommaren fortsätter med Midnattsloppet på Södermalm 15 augusti och avslutas med adidas Stockholm Halvmarathon 29 augusti. Samtidigt pågår nattarbete på Nordsydaxeln, där flera nätter stängs delar av leden mellan Gullmarsplan och Hagastaden av för drift- och underhållsarbete - något pendlare i regionen bör räkna med under de kommande veckorna. <a href="https://www.visitstockholm.se/se-gora/aktiviteter/hander-i-stockholm/" target="_blank" rel="noopener" class="inline-src">(källa: Visit Stockholm)</a></p>
+
+      <h3 class="paper">Kommande evenemang</h3>
+      <p>Vid sidan av idrottsevenemangen väntar en tät konsertkalender. The Weeknd spelar tre kvällar på Strawberry Arena 8-10 augusti - sommarens enskilt största konsertserie i staden - och Veronica Maggio följer upp med en spelning på Stockholms Stadion den 22 augusti. Mitt emellan ligger Stockholms kulturfestival, som 12-16 augusti fyller gator och torg med musik, dans, konst och samtal med fri entré. Gröna Lund fortsätter dessutom att erbjuda över 60 konserter under hela sommarsäsongen - ett säsongskort ("Gröna Kortet") för 440 kronor ger tillgång till hela sommarens program. <a href="https://www.gronalund.com/" target="_blank" rel="noopener" class="inline-src">(källa: Gröna Lund)</a></p>
+
+      <h3 class="paper">7-dagarsprognos för Stockholm</h3>
+      <table class="weather">
+        <tr><th>Dag</th><th>Väder</th><th>Max/min</th><th>Nederbörd</th><th>Vind</th></tr>
+        <tr><td class="day">Tis 4 aug</td><td>Sol, delvis molnigt</td><td>25&deg;/15&deg;</td><td>0 mm</td><td>4 m/s</td></tr>
+        <tr><td class="day">Ons 5 aug</td><td>Molnigt, kraftigt regn</td><td>20&deg;/17&deg;</td><td>24 mm</td><td>4 m/s</td></tr>
+        <tr><td class="day">Tors 6 aug</td><td>Uppehåll, sol</td><td>25&deg;/17&deg;</td><td>0 mm</td><td>6 m/s</td></tr>
+        <tr><td class="day">Fre 7 aug</td><td>Sol, delvis molnigt</td><td>23&deg;/16&deg;</td><td>0 mm</td><td>4 m/s</td></tr>
+        <tr><td class="day">Lör 8 aug</td><td>Sol, delvis molnigt</td><td>22&deg;/15&deg;</td><td>0 mm</td><td>2 m/s</td></tr>
+        <tr><td class="day">Sön 9 aug</td><td>Delvis molnigt</td><td>23&deg;/15&deg;</td><td>0 mm</td><td>4 m/s</td></tr>
+        <tr><td class="day">Mån 10 aug</td><td>Delvis molnigt</td><td>25&deg;/16&deg;</td><td>0 mm</td><td>5 m/s</td></tr>
+      </table>
+      <p>Prognosen pekar mot en kort regnperiod på onsdagen (upp mot 24 mm) följt av en stabil, varm högsommarperiod med temperaturer kring 22-25 grader resten av veckan och in i nästa - goda förutsättningar för både seglings-förberedelserna på Riddarfjärden och uteserveringarna inför kulturfestivalen.</p>
+
+      <div class="analys-box">
+        <strong class="lead">Analys:</strong> Stockholms augustikalender sticker ut genom sin koncentration - istället för att sprida ut de stora evenemangen över sommaren har flera av säsongens höjdpunkter, från seglings-VM till kulturfestivalen, hamnat i exakt samma tvåveckorsfönster i mitten av månaden. Vädret spelar sin roll i sammanhanget: efter onsdagens regnskur pekar prognosen mot en stabil, torr period som gynnar just de utomhusevenemang som klumpar ihop sig 12-16 augusti. Den som vill uppleva bredden i stadens sommarutbud - idrott, musik, gratis kulturfestival - bör alltså planera in just den perioden, snarare än att vänta till senare i månaden.
+      </div>
+      <div class="sources">Källor: <a href="https://www.visitstockholm.se/se-gora/aktiviteter/hander-i-stockholm/" target="_blank" rel="noopener">Visit Stockholm</a>, <a href="https://trafiken.nu/stockholm/" target="_blank" rel="noopener">Trafiken.nu</a>, <a href="https://www.gronalund.com/" target="_blank" rel="noopener">Gröna Lund</a>, <a href="https://www.yr.no/en/forecast/daily-table/2-2673730/Sweden/Stockholm%20County/Stockholm%20Municipality/Stockholm" target="_blank" rel="noopener">Yr.no (Norwegian Meteorological Institute)</a></div>
+    </section>
+  </div>
+
+  <!-- ============ SVERIGE ============ -->
+  <div class="tab-panel" data-panel="sverige">
+    <section class="card">
+      <span class="tag">Sverige &middot; Fördjupning</span>
+      <h2 class="section-title">Sverige: veckans viktigaste nyheter</h2>
+      <div class="dateline">Veckan 28 juli &ndash; 3 augusti 2026</div>
+
+      <h3 class="paper">Nationellt: SM-veckan, Ceuta-reaktioner och valobservatörer</h3>
+      <p>Fler än 50 000 deltagare väntas när SM-veckan drar igång i helgen, med en parad som en av de stora programpunkterna och ett omfattande säkerhetsarbete i bakgrunden. Den spanska exklaven Ceutas hantering av en stor våg migranter har samtidigt väckt politisk debatt även i Sverige, där kritiker menar att EU:s gränspolitik uppvisar "obefintlig empati". Ett år efter lagändringen som gjorde det enklare att byta juridiskt kön syns en fortsatt ökning av antalet ansökningar - en utveckling som fortsätter att splittra opinionen. Mest uppseendeväckande var kanske ändå ett formellt besked: OSSE/ODIHR skickar inga valobservatörer till höstens riksdagsval, ett ovanligt beslut som redan hunnit uppmärksammas brett inför valet 13 september.</p>
+
+      <h3 class="paper">Lokalt: Nacka</h3>
+      <p>Lokalt i Nacka dominerades veckan av administrativa men konkreta nyheter. Katja Awiti tillträder som ny klimat- och miljödirektör 10 augusti och ska leda kommunens klimat- och hållbarhetsarbete, samma dag som ett nytt passersystem med automatisk fakturering införs för företagsbesök på återvinningscentralerna. Samtliga 26 kommunala badplatser har nu toppklassning - upp från 18 stycken 2024 - och det nya Näckenbadet i Saltsjöbaden öppnar under augusti. Den som pendlar bör samtidigt räkna med växelvis trafik på Järlaleden vid Kyrkviken, där ny beläggning läggs under två veckor i augusti.</p>
+
+      <div class="analys-box">
+        <strong class="lead">Analys:</strong> Det mest slående med veckans svenska nyheter, sett bortom huvudstadsregionen, är kombinationen av stark lokal leveransförmåga - Nackas badplatser är nu toppklassade rakt över linjen, samtidigt som kommunen fortsätter investera i klimatledning och infrastruktur - och en nationell nyhet som väcker mer grundläggande frågor: att internationella valobservatörer uteblir inför ett riksdagsval är ovanligt nog för att sannolikt bli en följetong genom hela valrörelsen, snarare än en engångsnyhet. Se Politik-fliken för fördjupning kring opinionsläget och valanalysen.
+      </div>
+      <div class="sources">Källor: <a href="https://www.svt.se/nyheter/inrikes/" target="_blank" rel="noopener">SVT Nyheter</a>, <a href="https://www.dagensdatum.nu/" target="_blank" rel="noopener">Dagens Datum</a>, <a href="https://www.nacka.se/nyheter-start" target="_blank" rel="noopener">Nacka kommun</a></div>
+    </section>
+  </div>
+
+  <!-- ============ UTRIKES ============ -->
+  <div class="tab-panel" data-panel="utrikes">
+    <section class="card">
+      <span class="tag">Utrikes &middot; Fördjupning</span>
+      <h2 class="section-title">Mellanöstern och Ukraina: en vecka av skör de-eskalering</h2>
+      <div class="dateline">Veckan 28 juli &ndash; 3 augusti 2026</div>
+
+      <h3 class="paper">Iran och Hormuzsundet: från attackhot till förhandlingsbord</h3>
+      <p>Veckan inleddes med USA och Israel på väg att inleda en av de hårdaste bombkampanjerna hittills mot iransk energiinfrastruktur - en eskalering som byggde vidare på de "major combat operations" Trump inledde mot Iran redan i slutet av februari. I stället svängde läget dramatiskt: på lördagen meddelade Trump att attacken var inställd i väntan på ett avtal som skulle innebära full öppning av Hormuzsundet, och på söndagen bekräftade han att den var helt avblåst. Utrikesminister Marco Rubio gick ett steg längre och sa att Iran nu är "mer berett" att förhandla om både kärnprogrammet och sjöfarten genom sundet, med nya samtal inplanerade till måndagen.</p>
+      <p>Bakom kulisserna spelade regional diplomati sannolikt en roll: enligt CNN ska Trump ha talat med den saudiske kronprinsen, som uttryckte oro över konsekvenserna av nya amerikanska attacker. Iran självt har dock hela veckan varit försiktigt i sina egna uttalanden - utrikesminister Abbas Araghchi varnade USA för "äventyrliga handlingar" även efter att attacken ställts in, vilket tyder på att Teheran fortfarande betraktar det amerikanska agerandet med misstro snarare än som en ren förhandlingsöppning.</p>
+
+      <h3 class="paper">Gaza: Hamas fredsplan möter israeliskt tvivel</h3>
+      <p>Parallellt med Iran-spåret rörde sig Gaza-frågan i otakt med sig själv. Hamas gick under veckan med på ett utkast till fredsplan som innebär avväpning mot ett gradvis israeliskt tillbakadragande - ett genombrott efter månader av stillastående förhandlingar. Men Israel har ännu inte formellt behandlat eller godkänt planen, och enligt uppgift har man delat "allvarliga säkerhetsbetänkligheter" med Washington om just avväpningsupplägget. Samtidigt fortsatte israeliska attacker över Gaza genom hela veckan - Haaretz rapporterade om minst sex dödade, däribland ett barn, i en ny våg anfall så sent som under helgen.</p>
+      <p>Kombinationen är svår att tolka entydigt: ett diplomatiskt genombrott på pappret, men fortsatta dödsoffer på marken. Det säger något om hur Gaza-konflikten skiljer sig från Iran-spåret - där de politiska ledarnas retorik snabbt kan svänga mellan konfrontation och förhandling, är händelseutvecklingen i Gaza mer trögrörlig och mindre känslig för enskilda uttalanden från Washington.</p>
+
+      <h3 class="paper">Ukraina: Kiev under eld, Ryssland under press</h3>
+      <p>Kriget i Ukraina följde under veckan sitt etablerade mönster av ömsesidig eskalering utan avgörande. Natten mot den 1 augusti genomförde Ryssland en av krigets mest omfattande enskilda attacker mot Kiev - omkring 35 robotar och nära 190 drönare, minst nio döda och 40 skadade. Ukraina svarade dagen efter med egna långdistansslag mot ryskt territorium, mot bland annat flygvapenbasen i Engels och oljeraffinaderiet i Saratov, och avslutade veckan med drönarattacker som satte eld på ett lager i Ryssland och dödade minst fem personer.</p>
+      <p>Det som sticker ut mest är förlustsiffrorna: enligt ukrainska uppgifter blev juli en av krigets dyraste månader för Ryssland i mänskliga termer, med 42 860 dödade och sårade soldater under en enda månad. Ändå visar veckans stora Kiev-attack att Ryssland fortfarande har kapacitet att genomföra massiva, samordnade insatser - en påminnelse om att tunga förlustsiffror inte automatiskt översätts till minskad slagkraft på kort sikt.</p>
+
+      <div class="analys-box">
+        <strong class="lead">Analys:</strong> Veckans mönster i både Mellanöstern och Ukraina är detsamma: diplomatiska öppningar som inte matchas av motsvarande förändring på marken. Iran-spåret har gått från vagt "nära förestående avtal" till ett konkret, datumsatt möte - den tydligaste konkretiseringen på länge - men utan att Iran självt bekräftat någon eftergift. Gaza-planen är godkänd av Hamas men inte av Israel, och strider pågår fortfarande. Och i Ukraina fortsätter båda sidor att eskalera trots (eller kanske på grund av) att ingendera bedömer sig ha råd att blinka först. Slutsatsen för veckan som helhet: fler diplomatiska rörelser än på länge, men ingen av de tre konflikterna är närmare en faktisk lösning än de var för sju dagar sedan.
+      </div>
+      <div class="sources">Källor: <a href="https://abcnews.com/International/live-updates/iran-live-updates-tehran-progress-made-strait-hormuz/?id=135110405" target="_blank" rel="noopener">ABC News</a>, <a href="https://www.cnn.com/2026/08/02/world/live-news/iran-war-trump" target="_blank" rel="noopener">CNN</a>, <a href="https://www.aljazeera.com/news/liveblog/2026/7/31/iran-war-live-trump-says-hamas-to-disarm-israel-to-leave-gaza-gradually" target="_blank" rel="noopener">Al Jazeera</a>, <a href="https://www.haaretz.com/" target="_blank" rel="noopener">Haaretz</a>, <a href="https://www.npr.org/2026/07/30/g-s1-136276/russia-ukraine-war" target="_blank" rel="noopener">NPR</a>, <a href="https://www.ukrinform.net/rubric-ato" target="_blank" rel="noopener">Ukrinform</a>, <a href="https://kyivindependent.com/" target="_blank" rel="noopener">Kyiv Independent</a></div>
+    </section>
+  </div>
+
+  <!-- ============ POLITIK ============ -->
+  <div class="tab-panel" data-panel="politik">
+    <section class="card">
+      <span class="tag">Politik &middot; Fördjupning</span>
+      <h2 class="section-title">Politik: opinion, debatt och valanalys - 42 dagar kvar</h2>
+      <div class="dateline">Veckan 28 juli &ndash; 3 augusti 2026</div>
+
+      <h3 class="paper">Opinionsundersökningarna: SD faller, S håller emot</h3>
+      <p>Veckans opinionsmätningar bekräftar en trend som byggts upp under sommaren: Sverigedemokraterna tappar mark samtidigt som Socialdemokraterna håller emot bättre än väntat. PolitPros sammanvägning från 2 augusti gav S 32,1%, SD 19,9% och M 17,2%, med regeringspartierna (M, KD, L) tillsammans på 44,4% av mandaten - 42 dagar innan valdagen 13 september. Bilden är dock inte helt entydig: Novus mätning från senare i juli gav en högre SD-siffra (20,4%) och ett lägre S (31,8%), medan Nordisk Opinions julibarometer visade SD ner hela 4,4 enheter till 19,1% och S under 30% för första gången i mätserien. Spridningen mellan instituten är ovanligt stor för årstiden, vilket i sig är en nyhet - opinionsläget är mer volatilt nu än på länge.</p>
+
+      <h3 class="paper">Debatten inför valet: Tidöspänningar och sakfrågor</h3>
+      <p>Under ytan på siffrorna ligger en mer strukturell osäkerhet: kommer Sverigedemokraterna fortsätta nöja sig med rollen som stödparti utan regeringsposter, eller kräver partiet mer inflytande i en eventuell ny mandatperiod - särskilt nu när M:s egna siffror stärkts relativt SD:s inom blocket? Novus återkommande mätning av "viktigaste politiska frågan" visar att sjukvård och skola toppar listan, följt av lag och ordning, medan försvarsfrågan - som växte kraftigt i vikt under vintern - fallit tillbaka något. Det betyder att valrörelsens tyngdpunkt i praktiken ligger på välfärdsfrågor snarare än på kriget i Ukraina eller Mellanöstern, trots att båda dominerar utrikesbevakningen. Till bilden hör också veckans besked att OSSE/ODIHR inte skickar valobservatörer till valet (se Sverige-fliken) - ett ovanligt drag som redan blivit en del av den politiska debatten om valets legitimitet och genomförande.</p>
+
+      <h3 class="paper">Valanalys: vad avgör utfallet 13 september?</h3>
+      <p>Ställer man samman opinionsläget och sakfrågedebatten framträder ett val där den avgörande frågan kanske inte är block mot block, utan balansen inom respektive block. Inom högerblocket handlar det om huruvida M kan fortsätta stärka sin ställning relativt SD - vilket skulle göra det lättare att hålla SD på armlängds avstånd från formellt regeringsinflytande - eller om SD:s sommartapp bara är tillfälligt. Inom vänsterblocket är frågan om S kan hålla sig över 30% ända fram till valdagen, eller om V, MP och C tar tillräckligt med mark för att komplicera en eventuell regeringsbildning. Eftersom väljarnas prioriterade frågor (sjukvård, skola, lag och ordning) är just de områden där Tidöregeringens facit ifrågasätts hårdast, gynnar sakfrågeläget i grunden oppositionen - men den ovanligt stora spridningen mellan mätinstituten gör att ingen etablerad prognos bör tas för given så här sex veckor före valdagen.</p>
+
+      <div class="analys-box">
+        <strong class="lead">Analys:</strong> Det mest talande med veckans politiska nyheter är kanske inte någon enskild händelse, utan just spridningen mellan opinionsinstituten - ett tecken på att väljarkåren är mer rörlig än den varit på länge. Att SD:s tapp är den mest konsekventa iakttagelsen över flera institut, samtidigt som S håller sig kvar över 30% i de flesta mätningar, pekar mot ett val där båda blockens interna balans kan bli minst lika avgörande som själva blockskillnaden. Se Debatt-fliken för hur ledarsidorna själva resonerar kring valrörelsen just nu.
+      </div>
+      <div class="sources">Källor: <a href="https://politpro.eu/en/sweden" target="_blank" rel="noopener">PolitPro</a>, <a href="https://novus.se/" target="_blank" rel="noopener">Novus</a>, <a href="https://nordiskopinion.se/" target="_blank" rel="noopener">Nordisk Opinion</a>, <a href="https://www.dagensdatum.nu/" target="_blank" rel="noopener">Dagens Datum</a></div>
+    </section>
+  </div>
+
+  <!-- ============ KULTUR ============ -->
+  <div class="tab-panel" data-panel="kultur">
+    <section class="card">
+      <span class="tag">Kultur &middot; Fördjupning</span>
+      <h2 class="section-title">Kultur: böcker, musik, film och TV-serier</h2>
+      <div class="dateline">Veckan 28 juli &ndash; 3 augusti 2026</div>
+
+      <h3 class="paper">Böcker: spöken, poesi och en sommarlista</h3>
+      <p>Inom litteraturen dominerade en spökroman och en poesisamling veckans recensioner - båda beskrivs som säregna läsupplevelser, där poesin enligt kritikern är "starkt doftande" men "ibland uppträder i urtvättad kostym". Till det kommer Kristina Lindquists lista med fem böcker för "en ensam sommar", och litteraturfestivalen på Österlen som under sommaren samlat författare och läsare för samtal om läsningens roll i en tid av digital distraktion. Bland boktipsen sticker klassikern "Beloved" av Toni Morrison ut som veckans återkommande rekommendation: en krävande men djupt gripande roman om slaveriets eftervärkningar, belönad med Pulitzerpriset och en central del av motiveringen till Morrisons Nobelpris 1993. <a href="https://www.dn.se/kultur/" target="_blank" rel="noopener" class="inline-src">(källa: DN Kultur)</a></p>
+
+      <h3 class="paper">Musik: opera möter pop</h3>
+      <p>DN:s recensent lyfte fram Monteverdis "Poppeas kröning" för sin sensuella dramatik och sångarnas nakna uttryck - ett av barockoperans mest moraliskt komplexa verk, där makten till slut segrar över dygden. Vid sidan av operan fick Ariana Grandes nya album ett betydligt svalare mottagande: "habil men vågar inte ta risker", enligt DN:s Sara Martinsson, som menar att skivan alltför mycket liknar Taylor Swift utan att hitta en egen identitet. Veckans utvalda klassiska album, Miles Davis "Kind of Blue" (1959), representerar en helt annan typ av tidlöshet - inspelad på bara två sessioner med en stjärnspäckad sextett kring Davis, Coltrane och Bill Evans, och alltjämt det bästsäljande jazzalbumet genom tiderna.</p>
+
+      <h3 class="paper">Film: prisbelönta debuter och sommarens biopremiärer</h3>
+      <p>Augusti bjuder på ett par filmer som redan hunnit bli prisdragplåster innan de nått den breda publiken. Den franske illustratören Ugo Bienvenüs animerade långfilmsdebut "Arco" har blivit en riktig prisjägare, nominerad till bästa animerade film vid både Oscarsgalan, Golden Globe och de europeiska filmpriserna, med Natalie Portman som både producent och röstskådespelare. "The Dinner Guests" - en engelskspråkig tolkning av den spanska filmen "Grannarna på ovanvåningen" - fick stående ovationer vid premiären på Sundance Film Festival innan A24 vann distributionsrättigheterna; handlingen följer ett par vars artiga middagsbjudning för sina excentriska grannar snabbt urartar till en natt som rubbar allt de trodde sig veta om sin relation. Bland höstens och årets stora väntade titlar nämns återkommande "Wuthering Heights", "Michael" och den animerade "Super Mario Galaxy"-filmen, medan den svenska familjefilmen "Skurkarnas skurk" lyfts fram som ett bevis på "hur bra svenska familjefilmer kan bli". <a href="https://www.filmtopp.se/lista/biopremiarer-i-augusti-2026-hojdpunkterna-bland-manadens-nya-biofilmer" target="_blank" rel="noopener" class="inline-src">(källa: Filmtopp)</a></p>
+
+      <h3 class="paper">TV-serier: svenskt kriminaldrama och stora avslutningar</h3>
+      <p>Den svenska kriminalserien "Blodsoffer", med Jakob Oftebro och Peter Andersson och skapad av britten George Kay, är en av augustis stora Netflix-premiärer - serien följer kriminalaren Thomas och hans pensionerade poliska far Alfred, som tvingas samarbeta för att stoppa en mördare som systematiskt dödar poliser. Vid sidan av den svenska satsningen går flera stora internationella serier mot sina slut eller nästa kapitel: "Outer Banks" är tillbaka med sin femte och avslutande säsong, den colombianska "100 år av ensamhet" får sin andra och sista säsong den 5 augusti, och "My Life with the Walter Boys" fortsätter med säsong tre. På Disney+ har FX-dramat "The Shards" och "Star Wars: Visions Presents - The Ninth Jedi" premiär under månaden. <a href="https://www.moviezine.se/nyheter/8-basta-tv-serierna-i-augusti-sommarens-sista-stora-premiarer" target="_blank" rel="noopener" class="inline-src">(källa: MovieZine)</a></p>
+
+      <div class="analys-box">
+        <strong class="lead">Analys:</strong> Ett tydligt mönster löper genom veckans kulturutbud: sidoställningen mellan det redan kanoniserade och det som just nu prövas mot publiken. Monteverdi mot Grande, Morrisons fyrtio år gamla "Beloved" mot veckans nya spökroman, "Arco" och "The Dinner Guests" - redan hyllade på festivalcirkeln - mot Netflix stora satsning "Blodsoffer" som ännu inte mött sin publik. Genomgående är kritikernas omdömen försiktigare för det som är helt nytt ("habil men vågar inte ta risker") än för det som redan hunnit bevisa sig, vilket säger mer om hur svårt det är att bedöma samtida konst i realtid än om kvaliteten på själva verken. Att både Sverige (Blodsoffer) och Colombia (100 år av ensamhet) samtidigt får stora internationella streamingsatsningar visar också hur global konkurrensen om Netflix-tittarnas uppmärksamhet blivit.
+      </div>
+      <div class="sources">Källor: <a href="https://www.dn.se/kultur/" target="_blank" rel="noopener">DN Kultur</a>, <a href="https://boktugg.se/" target="_blank" rel="noopener">Boktugg.se</a>, <a href="https://www.filmtopp.se/lista/biopremiarer-i-augusti-2026-hojdpunkterna-bland-manadens-nya-biofilmer" target="_blank" rel="noopener">Filmtopp</a>, <a href="https://www.moviezine.se/nyheter/8-basta-tv-serierna-i-augusti-sommarens-sista-stora-premiarer" target="_blank" rel="noopener">MovieZine</a>, <a href="https://www.elle.se/noje/6-utvalda-tv-serier-och-filmer-som-kommer-till-netflix-i-augusti-2026/11546907" target="_blank" rel="noopener">Elle</a></div>
+    </section>
+  </div>
+
+  <!-- ============ DEBATT ============ -->
+  <div class="tab-panel" data-panel="debatt">
+    <section class="card">
+      <span class="tag">Debatt &middot; Fördjupning</span>
+      <h2 class="section-title">Debatt: kulturdebatten och ledarsidorna</h2>
+      <div class="dateline">Veckan 28 juli &ndash; 3 augusti 2026</div>
+
+      <h3 class="paper">Kulturdebatten: AI-bolagens makt sätts under lupp</h3>
+      <p>Den mest genomgående tråden i veckans kulturdebatt var frågan om AI-bolagens makt och ansvar. DN Kultur-skribenten Martin Gelin beskrev i en uppmärksammad essä vad han kallar en begynnande "global backlash mot AI-företagen" - en förskjutning i det offentliga samtalet från fascination till oro, där allt fler röster ifrågasätter om de stora teknikbolagen tar tillräckligt ansvar för konsekvenserna av sin egen teknik. Vid sidan av AI-frågan innehöll veckans kulturdebatt flera mer personligt hållna texter: Fanna Ndow Norrbys kolumn om vitt snus väckte starka reaktioner och togs av flera läsare som en kommentar om klass och identitet, och Johannes Klenell riktade skarp kritik mot Liberalernas förhållande till Sverigedemokraterna i en krönika som medvetet suddade ut gränsen mellan kulturkrönika och politisk ledarartikel. Den bredare mediedebatten kretsade dels kring arbetet med public service-uppdraget för 2026-2033, dels kring Mediemyndighetens undersökning av ungas syn på "artificiella relationer" med AI-chattbotar - en fråga som fått ny skärpa i ljuset av veckans AI-säkerhetsdebatt.</p>
+
+      <h3 class="paper">Ledarsidorna: DN, SvD, Aftonbladet och Expressen</h3>
+      <p>Dagens Nyheters ledarsida ägnade veckan huvudsakligen åt den svenska valrörelsen: Max Hjelm konstaterade att "det blir en underlig valrörelse i år" och beskrev mandatperioden som en "floppe" för Tidöpartierna, Viktor Karlsson varnade för hotet mot dricksvattenkvaliteten, och Lilian Sjölund lyfte fram att riksdagen varken har plats för de allra yngsta eller de allra äldsta väljargrupperna. De övriga tidningarna var mer händelsestyrda: SvD:s ledarredaktion knöt ihop veckans nyhetsflöde från Ceuta-krisen till förslaget om en ministerpost för Daniel Suhonen, Aftonbladets Lina Stenberg skrev inför Prideveckan om varför det nyinrättade hatbrottsrådet är "livsviktigt", och Expressen gick hårdast fram politiskt - Ylva Nilsson kallade Ceuta-krisen ett bevis på "EU:s stora svaghet", Patrik Kronqvist menade att "Estland har fattat det som Sverige missar", och en fristående ledartext hävdade rakt av att "Socialdemokraterna hotar rikets säkerhet". Minst lika talande som vad som skrevs är vad som lyste med sin frånvaro: trots att veckans mest dramatiska internationella händelse rörde Iran och Hormuzsundet (se Utrikes-fliken) ägnade ingen av de fyra tidningarna en egen ledartext åt den frågan, och AI-branschens utveckling (se Ekonomi-fliken) var helt frånvarande - trots att den diskuterades desto flitigare i kulturdebatten ovan.</p>
+
+      <div class="analys-box">
+        <strong class="lead">Analys:</strong> Ställer man kulturdebatten och ledarsidorna sida vid sida framträder en tydlig arbetsfördelning i den svenska opinionsjournalistiken. Ledarsidorna - med DN:s analytiska avstånd, Expressens konfrontativa säkerhetspolitiska ton, och SvD/Aftonbladet däremellan - ägnar sig nästan uteslutande åt valrörelsen och traditionell säkerhetspolitik. Kulturdebatten tar sig i stället an de frågor som ledarsidorna lämnar orörda: AI-bolagens makt, ungas relationer till teknik, public service framtid. Att varken Iran-krisen eller AI-utvecklingen fick en enda ledartext denna vecka, samtidigt som AI-frågan dominerade kultursidorna, visar hur starkt valrörelsen redan absorberat den svenska ledarsidejournalistikens uppmärksamhet - och hur mycket av det som annars skulle kallas "opinionsbildning om samtidsfrågor" i praktiken sker på kultursidorna snarare än på ledarsidorna 42 dagar före valet.
+      </div>
+      <div class="sources">Källor: <a href="https://www.dn.se/ledare/" target="_blank" rel="noopener">DN</a>, <a href="https://www.svd.se/ledare" target="_blank" rel="noopener">SvD</a>, <a href="https://www.aftonbladet.se/ledare" target="_blank" rel="noopener">Aftonbladet</a>, <a href="https://www.expressen.se/ledare/" target="_blank" rel="noopener">Expressen</a>, <a href="https://www.dn.se/kultur/" target="_blank" rel="noopener">DN Kultur</a>, <a href="https://mprt.se/" target="_blank" rel="noopener">Mediemyndigheten</a></div>
+    </section>
+  </div>
+
+  <!-- ============ MILJÖ & KLIMAT ============ -->
+  <div class="tab-panel" data-panel="miljo">
+    <section class="card">
+      <span class="tag">Miljö &amp; klimat &middot; Fördjupning</span>
+      <h2 class="section-title">Värmerekord och tekniklöften</h2>
+      <div class="dateline">Veckan 28 juli &ndash; 3 augusti 2026</div>
+
+      <h3 class="paper">Global uppvärmning: WMO:s varning</h3>
+      <p>FN:s väderorgan WMO upprepade under veckan sin varning om att världen går in i en ny period av extremvärme - med 86% sannolikhet att minst ett av åren 2026-2030 slår rekordet från 2024 som varmaste året uppmätt. Den tidigare Nasa-forskaren James Hansen upprepade sin bedömning att 2026 sannolikt blir det varmaste året hittills, trots att det inleddes svalare än 2024. En ljuspunkt: tio år efter Parisavtalet har prognosen för global uppvärmning förbättrats från cirka 4 grader till dagens 2,8 grader - ett framsteg, men fortfarande långt över 1,5-gradersmålet.</p>
+
+      <h3 class="paper">Europas värmebölja i efterhand</h3>
+      <p>En attributionsstudie från World Weather Attribution publicerad under sommaren visade att junis värmebölja i Europa - med temperaturer på 40 grader i Frankrike, Portugal och Spanien - hade varit "praktiskt taget omöjlig" för 50 år sedan. Franska hälsomyndigheten har sedan dess fördubblat sin skattning av överdödlighet kopplad till värmen, från 1 000 till över 2 000 personer - en påminnelse om att klimatförändringens hälsokonsekvenser ofta blir tydliga först i efterhand, när dödssiffrorna räknas samman.</p>
+
+      <h3 class="paper">Klimatteknik: från perovskit till DAC</h3>
+      <p>På teknikfronten fortsatte flera parallella spår att utvecklas: perovskit-solceller närmar sig verkningsgrader på 40% i laboratoriemiljö, forskare vid Luleå tekniska universitet har utvecklat ett vätskesystem som fångar in över 97% av koldioxiden i rökgaser, och branschen för direkt luftinfångning (DAC) beskrivs ha gått från "laboratoriecuriosum till infrastrukturverklighet" - även om kostnaden per infångat ton fortfarande är hög och behöver falla kraftigt för att bli storskaligt lönsam.</p>
+
+      <div class="analys-box">
+        <strong class="lead">Analys:</strong> Veckans klimatnyheter fångar den grundläggande spänningen i klimatfrågan just nu: samtidigt som uppvärmningsprognoserna gradvis förbättras tack vare politiska och tekniska framsteg, blir de konkreta konsekvenserna - värmeböljor, överdödlighet, extremväder - alltmer påtagliga i närtid. Teknikutvecklingen inom allt från solceller till koldioxidinfångning ger skäl till försiktig optimism på längre sikt, men den hjälper inte de tusentals människor som redan drabbats av sommarens värmeböljor. Frågan för hösten blir om de tekniska genombrotten kan skalas upp snabbare än de klimatrelaterade riskerna hinner materialiseras.
+      </div>
+      <div class="sources">Källor: <a href="https://www.carbonbrief.org/" target="_blank" rel="noopener">Carbon Brief</a>, <a href="https://insideclimatenews.org/" target="_blank" rel="noopener">Inside Climate News</a>, <a href="https://news.un.org/" target="_blank" rel="noopener">UN News</a>, <a href="https://www.ltu.se/" target="_blank" rel="noopener">Luleå tekniska universitet</a>, <a href="https://www.realtid.se/" target="_blank" rel="noopener">Realtid</a></div>
+    </section>
+  </div>
+
+  <!-- ============ FORSKNING & FRAMSTEG ============ -->
+  <div class="tab-panel" data-panel="forskning">
+    <section class="card">
+      <span class="tag">Forskning &amp; framsteg &middot; Fördjupning</span>
+      <h2 class="section-title">Forskning &amp; framsteg: batterier, cancertest och cybersäkerhet</h2>
+      <div class="dateline">Veckan 28 juli &ndash; 3 augusti 2026</div>
+
+      <h3 class="paper">Energilagring: enkel kemitrick kan ge kraftfullare batterier</h3>
+      <p>En av veckans mer oväntade forskningsnyheter kom från batterifronten: forskare rapporterar att en förvånansvärt enkel förändring i natriumjonbatteriers kemi kan göra dem betydligt kraftfullare. Natriumjonbatterier har länge setts som ett billigare men svagare alternativ till litiumjonbatterier, eftersom natriumjoner är större och tyngre än litiumjoner. Det som gör fyndet extra intressant är att samma grundprincip - hur jonerna rör sig genom materialet - också öppnar för teknik som kan omvandla havsvatten till dricksvatten, vilket gör upptäckten relevant för både energilagring och global vattenförsörjning på en och samma gång. Parallellt har kemister vid Rice University hittat ett sätt att få neodym - en sällsynt jordartsmetall som används i permanentmagneter till bland annat elmotorer och vindkraftverk - att reagera med syre på ett sätt som tidigare ansetts osannolikt, med hjälp av en specialdesignad molekylär "korg" som positionerar atomerna rätt.</p>
+
+      <h3 class="paper">Medicin: ett blodprov för 50 cancerformer</h3>
+      <p>Inom medicinsk forskning är veckans mest lovande nyhet ett blodprov som kan upptäcka omkring 50 olika cancerformer redan innan de första symtomen visar sig - ett potentiellt genombrott för tidig diagnos, som historiskt är en av de starkaste enskilda faktorerna för överlevnad vid cancer. Samtidigt visar en fyra månader lång studie med 315 vuxna med bukfetma att förvånansvärt små doser regelbunden träning kan ge betydande hälsovinster - ett fynd som sänker tröskeln för vad som räknas som "tillräcklig" motion och kan göra livsstilsråd mer realistiska för fler. På materialsidan lyfts kombinationen av IoT-sensorer och redan existerande självläkande material fram som ett av årets viktigaste materialvetenskapliga genombrott, med potential att flytta hela industrier - från infrastruktur till konsumentelektronik - mot prediktivt underhåll snarare än reparation efter att skador redan uppstått.</p>
+
+      <h3 class="paper">Cybersäkerhet: tre incidenter på en vecka</h3>
+      <p>På säkerhetsfronten var veckan ovanligt händelserik. Fjärrhanteringsleverantören N-able bekräftade att angripare utnyttjat en autentiseringskringgång (CVE-2026-18577) i verktyget N-central för att skaffa sig fjärrstyrd administratörsåtkomst hos kunder - bolaget släppte en patchad version den 2 augusti och uppmanade kunder att uppdatera omedelbart. Samtidigt upptäcktes att angripare manipulerat en JavaScript-fil hos annonsteknikbolaget Adform och gjort om den till ett webbläsarbaserat verktyg som skriver om kryptovalutaadresser i realtid - en attack som spridit sig via flera annonsnätverk innan den upptäcktes. Det amerikanska läkemedelsbolaget Inotiv meddelade dessutom att man utsatts för en ransomware-attack där personuppgifter för 9 542 personer stulits. Tre helt olika typer av intrång - leverantörskedjeattack, annonsteknikmanipulation och rent utpressningsangrepp - inom loppet av en och samma vecka.</p>
+
+      <div class="analys-box">
+        <strong class="lead">Analys:</strong> Det gemensamma för veckans forskningsnyheter är hur ofta genombrott inom ett område visar sig ha oväntade tillämpningar inom ett helt annat - natriumbatterikemin som även kan avsalta havsvatten, självläkande material som möter sakernas internet snarare än att förbli en isolerad materialvetenskaplig kuriositet. Cybersäkerhetsnyheterna pekar samtidigt på en mindre optimistisk trend: att digital infrastruktur - fjärrhanteringsverktyg, annonsnätverk, läkemedelsbolagens system - attackeras via alltmer indirekta vägar, där leverantörer och mellanhänder blir ingångspunkten snarare än målet själv. För den som vill följa var forskningen faktiskt är på väg är kombinationen av dessa båda spår talande: samma vecka som vetenskapen tar kliv mot bättre batterier och tidigare cancerdiagnos, blir det tydligt att den digitala infrastruktur som bär upp både forskningen och vardagslivet fortsatt är sårbar på sätt som är svåra att förutse i förväg.
+      </div>
+      <div class="sources">Källor: <a href="https://www.sciencedaily.com/" target="_blank" rel="noopener">ScienceDaily</a>, <a href="https://www.cas.org/resources/cas-insights/scientific-breakthroughs-2026-emerging-trends-watch" target="_blank" rel="noopener">CAS</a>, <a href="https://gbhackers.com/weekly-cybersecurity-newsletter-july-27-august-1-2026/amp/" target="_blank" rel="noopener">GBHackers</a>, <a href="https://tech.co/news/data-breaches-updated-list" target="_blank" rel="noopener">Tech.co</a></div>
+    </section>
+  </div>
+
+  <!-- ============ SPORT ============ -->
+  <div class="tab-panel" data-panel="sport">
+    <section class="card">
+      <span class="tag">Sport &middot; Fördjupning</span>
+      <h2 class="section-title">Guimarães-affären och medaljkampen</h2>
+      <div class="dateline">Veckan 28 juli &ndash; 3 augusti 2026</div>
+
+      <h3 class="paper">Djurgården: medaljstrid inför Västerås-mötet</h3>
+      <p>Djurgården gick in i veckans avslutande omgång på fjärde plats i Allsvenskan, med en 1-0-vinst borta mot Degerfors som senaste resultat - ett mål av Bo Hegland efter en assist av Hampus Findell, trots att Degerfors dominerade bollinnehavet. Klubben stärkte samtidigt truppen genom att hämta målvakten Lukas Jonsson från VfL Osnabrück, medan mittfältaren Mattias Siltanen, 19, uppges vara het på transfermarknaden med bud från både Toulouse och Lyon. Söndagens hemmamatch mot nykomlingen Västerås SK, som ligger strax bakom på femteplats, blir en direkt duell om medaljplatserna - med IK Sirius fortsatt klart ledande i toppen av tabellen.</p>
+
+      <h3 class="paper">Arsenal: Guimarães klar för medicinsk kontroll</h3>
+      <p>Veckans stora affär inom europeisk fotboll var Arsenals jakt på Newcastles kapten Bruno Guimarães. Efter att Gunners två tidigare bud (70 och 80 miljoner euro) refuserats nådde klubbarna till slut en principöverenskommelse kring 90 miljoner euro, och enligt de senaste uppgifterna är en medicinsk undersökning inbokad till måndagen - ett tydligt tecken på att affären, värd omkring 80 miljoner pund, går mot sin slutfas med ett femårskontrakt för den brasilianske mittfältaren. Samtidigt fortsatte Arsenal städa i truppen: Christos Tzolis anslöt från Club Brugge, medan Leandro Trossard, Jakub Kiwior, Piero Hincapié och flera andra lämnat klubben inför en säsong med dubbla fronter i Premier League och Champions League.</p>
+
+      <h3 class="paper">Golf och Formel 1: slutspel och silly season</h3>
+      <p>Inom golfen går PGA Tour in i FedExCup-slutspelet, där Ludvig Åberg klättrat till toppskiktet av ställningen inför den första deltävlingen i Memphis (12-16 augusti). Inom Formel 1 dominerades veckan av förarmarknaden inför 2027 - Max Verstappens prestandaklausul (han måste ligga topp 2 vid sommaruppehållet, men ligger på P7) har satt fart på spekulationer om ett sabbatsår med bibehållen lön, medan endast fem förare hittills är helt säkrade för nästa säsong.</p>
+
+      <div class="analys-box">
+        <strong class="lead">Analys:</strong> Sportveckan illustrerar hur transferfönstrets sista veckor koncentrerar affärer som förhandlats i månader - Guimarães-sagan gick från "intensifierade samtal" till inbokad medicinsk kontroll på bara några dagar, ett mönster som brukar upprepa sig när deadline (1 september) närmar sig. För Djurgården är söndagens match mer avgörande än den kan verka: ett tapp mot Västerås skulle inte bara kosta poäng utan också släppa in en direkt konkurrent om medaljplatserna på samma höjd i tabellen - medan en vinst skulle befästa fjärdeplatsen med marginal inför höstens avgörande omgångar.
+      </div>
+      <div class="sources">Källor: <a href="https://sports.yahoo.com/articles/newcastle-united-star-bruno-guimaraes-184000591.html" target="_blank" rel="noopener">Yahoo Sports</a>, <a href="https://www.caughtoffside.com/2026/08/03/medical-scheduled-arsenal-make-breakthrough-brazilian/" target="_blank" rel="noopener">CaughtOffside</a>, <a href="https://www.svenskfotboll.se/serier-cuper/tabell-och-resultat/allsvenskan-2026/133348/" target="_blank" rel="noopener">Svensk Fotboll</a>, <a href="https://www.pgatour.com/" target="_blank" rel="noopener">PGA Tour</a>, <a href="https://www.formula1.com/" target="_blank" rel="noopener">Formula1.com</a></div>
+    </section>
+  </div>
+
+  <!-- ============ EKONOMI (extra) ============ -->
+  <div class="tab-panel" data-panel="ekonomi">
+    <section class="card">
+      <span class="tag">Ekonomi &middot; Fördjupning</span>
+      <h2 class="section-title">Inflationen vänder upp, Fed väntar och AI-branschen mognar</h2>
+      <div class="dateline">Veckan 28 juli &ndash; 3 augusti 2026</div>
+
+      <h3 class="paper">Eurozonen: inflationen accelererar igen</h3>
+      <p>Efter vårens gradvisa nedgång vände eurozonens inflation upp under veckan - 2,9% i juli, jämfört med 2,8% i juni. Uppgången drevs nästan helt av energipriser (10,0%, upp från 8,5%) i takt med att spänningarna mellan USA och Iran blossade upp igen inför helgens attackhot. Kärninflationen steg till 2,5% och tjänsteinflationen till 3,3% - båda klart över ECB:s tvåprocentsmål. ECB har redan skruvat upp sina egna prognoser för året och kopplar uttryckligen upprevideringen till kriget i Mellanöstern, samtidigt som tillväxtprognosen skrivits ned.</p>
+
+      <h3 class="paper">Fed håller emot trots tre avvikande röster</h3>
+      <p>Amerikanska Federal Reserve höll räntan oförändrad i intervallet 3,50-3,75% vid sitt julimöte - men beslutet var långt ifrån enhälligt. Tre regionala Fed-chefer röstade emot och ville se en höjning, med motiveringen att inflationen legat över målet i över fem år. Den nye ordföranden Kevin Warsh beskrev beslutet inte som en paus utan som "en noggrann genomgång av det ekonomiska läget", och underströk att Fed "inte kommer att tveka att agera" för att nå prisstabilitet.</p>
+
+      <h3 class="paper">AI-branschen: från chattbots till forskningsgenombrott</h3>
+      <p>OpenAI meddelade att en intern version av bolagets kommande flaggskeppsmodell löst tio tidigare olösta problem inom matematik och teoretisk datavetenskap - för endast omkring 2 000 dollar i beräkningskraft. Samtidigt fortsatte den kinesiska konkurrenten DeepSeek att pressa priserna med sin nya V4 Flash-modell. Branschanalytiker beskriver en bredare trend där köparnas intresse flyttas bort från uppseendeväckande chattdemos mot verktyg som faktiskt löser konkreta uppgifter snabbare.</p>
+
+      <div class="analys-box">
+        <strong class="lead">Analys:</strong> Veckans ekonominyheter binds samman av en gemensam tråd: penningpolitiken på båda sidor Atlanten dras i olika riktningar av krafter den inte kan kontrollera. ECB:s uppreviderade inflationsprognos är i praktiken en direkt konsekvens av krigsrisken i Mellanöstern, medan Feds interna splittring handlar mer om inhemsk, ihållande inflation. Att båda centralbankerna balanserar mellan att bekämpa inflation och undvika att strypa tillväxten, mitt i en period av snabb teknologisk omvälvning inom AI, gör penningpolitiken ovanligt svårförutsägbar inför hösten.
+      </div>
+      <div class="sources">Källor: <a href="https://tradingeconomics.com/euro-area/inflation-cpi" target="_blank" rel="noopener">Trading Economics</a>, <a href="https://www.ecb.europa.eu/" target="_blank" rel="noopener">ECB</a>, <a href="https://www.cnbc.com/2026/07/29/fed-rate-decision-july-2026.html" target="_blank" rel="noopener">CNBC</a>, <a href="https://www.buildfastwithai.com/blogs/ai-news-today-august-2-2026" target="_blank" rel="noopener">BuildFastWithAI</a></div>
+    </section>
+  </div>
+
+  <!-- ============ MAT & DRYCK (extra) ============ -->
+  <div class="tab-panel" data-panel="mat">
+    <section class="card">
+      <span class="tag">Mat &amp; dryck &middot; Fördjupning</span>
+      <h2 class="section-title">Mat &amp; dryck: sommarens smaker och krogscenen</h2>
+      <div class="dateline">Veckan 28 juli &ndash; 3 augusti 2026</div>
+
+      <h3 class="paper">Säsongens recept: enkelt, kryddigt och gjort i förväg</h3>
+      <p>Sommarens matrecept följer i år ett tydligt mönster mot enkelhet och förberedelse. ICA:s uppdaterade sommarrecept lyfter fram grillad kyckling med gingernudlar och sriracha-majonnäs, medan grillad korv med ljummen potatissallad representerar den mer klassiska, snabblagade linjen med hela rätten klar på under 45 minuter.</p>
+
+      <h3 class="paper">Vinhyllan: sommarens bästa köp</h3>
+      <p>Wine Tables Andreas Grube har gått igenom Systembolagets beställningssortiment och plockat ut sina favoriter för säsongen - en Chardonnay Brut Crémant de Bourgogne 2023 (185 kr) beskrivs som krämig och brödig, medan en sydafrikansk Catherine Marshall Pinot Noir (271 kr) sticker ut som blommig och bärig.</p>
+
+      <h3 class="paper">Krogscenen: nyöppningar, recensionsdebatt och Michelin</h3>
+      <p>Tommy Myllymäki och Pi Le har öppnat restaurangen Liv på Slussenterrassen, samtidigt som Expressens hårt tillspetsade recensionsserie "Krogkultur" väckt debatt om formatets rättvisa. Guide Michelins 2026-utgåva gav Sverige inga nya stjärnor alls i år - till skillnad från samtliga nordiska grannländer.</p>
+
+      <div class="analys-box">
+        <strong class="lead">Analys:</strong> Veckans mat- och dryckesnyheter speglar två parallella rörelser: en folklig, praktisk linje mot enkla sommarrecept och prisvärda vinfynd, och en mer elitistisk linje där Stockholms finare krogar tävlar om stjärnor och recensenternas gunst - med frågan om Sveriges uteblivna Michelin-stjärnor som en följetong att vänta sig mer av i höst.
+      </div>
+      <div class="sources">Källor: <a href="https://www.ica.se/artikel/sommarmat/" target="_blank" rel="noopener">ICA</a>, <a href="https://www.winetable.se/artiklar/basta-sommarvinerna-att-bestalla/" target="_blank" rel="noopener">Wine Table</a>, <a href="https://www.koket.se/svenska-stjarnor-i-guide-michelin-2026" target="_blank" rel="noopener">Köket.se</a></div>
+    </section>
+  </div>
+
+  <!-- ============ FILOSOFI & PSYKOLOGI (extra) ============ -->
+  <div class="tab-panel" data-panel="filosofi">
+    <section class="card">
+      <span class="tag">Filosofi &amp; psykologi &middot; Fördjupning</span>
+      <h2 class="section-title">Filosofi &amp; psykologi: fri eller formad?</h2>
+      <div class="dateline">Veckan 28 juli &ndash; 3 augusti 2026</div>
+
+      <h3 class="paper">Simone de Beauvoir: att bli kvinna</h3>
+      <p>Simone de Beauvoir (1908-1986) var en fransk filosof, författare och existentialist. Hennes huvudverk "Det andra könet" (1949) bygger på tesen "man föds inte till kvinna, man blir det": kvinnlighet är enligt Beauvoir inte en biologisk essens utan en social och kulturell konstruktion.</p>
+
+      <h3 class="paper">B.F. Skinner: beteendets arkitektur</h3>
+      <p>Burrhus Frederic Skinner (1904-1990) var den mest inflytelserika företrädaren för den radikala behaviorismen. I sin egenbyggda "Skinnerbox" visade han hur beteenden formas av förstärkning och bestraffning - principer som i dag ligger till grund för allt från beteendeterapi till hur sociala medier designas för att hålla kvar uppmärksamhet.</p>
+
+      <h3 class="paper">Två syner på människan: fri eller formad?</h3>
+      <p>Beauvoirs existentialism utgår från att människan i grunden är fri att omdefiniera samhälleligt konstruerade roller. Skinners behaviorism drar närmast motsatt slutsats: mänskligt beteende är i grunden resultatet av inlärningshistoria. En klassisk spänning mellan frihet och determinism som fortfarande genomsyrar debatten om AI och sociala medier.</p>
+
+      <div class="analys-box">
+        <strong class="lead">Analys:</strong> Beauvoirs tanke att identitet är konstruerad snarare än given, och Skinners insikter om förstärkning, talar båda rakt in i dagens debatt om AI-chattbotar och ungas "artificiella relationer" (se Debatt-fliken) - frågan är om den beauvoirianska friheten att "bli" fortfarande är meningsfull i en tid då så mycket av vår uppmärksamhet formas enligt skinneriansk logik.
+      </div>
+      <div class="sources">Källor: <a href="https://plato.stanford.edu/entries/beauvoir/" target="_blank" rel="noopener">Stanford Encyclopedia of Philosophy</a>, <a href="https://www.britannica.com/biography/B-F-Skinner" target="_blank" rel="noopener">Encyclopaedia Britannica - Skinner</a></div>
+    </section>
+  </div>
 
   <footer>
     NackaSidan Veckomagasin &middot; Test-prototyp, byggd 3 augusti 2026 &middot; Påverkar inte den dagliga NackaSidan
   </footer>
 
 </div>
+
+<script>
+(function() {
+  var buttons = document.querySelectorAll('.tabnav button[data-tab]');
+  var panels = document.querySelectorAll('.tab-panel');
+  function showTab(name) {
+    buttons.forEach(function(b) { b.classList.toggle('active', b.getAttribute('data-tab') === name); });
+    panels.forEach(function(p) { p.classList.toggle('active', p.getAttribute('data-panel') === name); });
+    window.scrollTo(0, 0);
+  }
+  buttons.forEach(function(b) {
+    b.addEventListener('click', function() { showTab(b.getAttribute('data-tab')); });
+  });
+})();
+</script>
+
 </body>
 </html>
