@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<title>NackaSidan Veckomagasin</title>
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    background: #f7f5f0;
+    color: #1a1a1a;
+    font-family: Georgia, 'Times New Roman', serif;
+    line-height: 1.6;
+  }
+  .masthead {
+    background: #14213d;
+    color: #f7f5f0;
+    padding: 32px 24px 24px;
+    text-align: center;
+    border-bottom: 4px solid #c9a227;
+  }
+  .masthead h1 { margin: 0; font-size: 2.6rem; letter-spacing: 0.5px; }
+  .masthead .sub { font-family: Arial, Helvetica, sans-serif; font-size: 1rem; opacity: 0.9; margin-top: 8px; }
+  .masthead .meta { margin-top: 6px; font-family: Arial, Helvetica, sans-serif; font-size: 0.85rem; opacity: 0.8; }
+  .container { max-width: 780px; margin: 0 auto; padding: 24px 20px 60px; }
+  .note { font-family: Arial, Helvetica, sans-serif; font-size: 0.85rem; background: #fbf3d9; border: 1px solid #e8d99a; padding: 14px 18px; border-radius: 6px; color: #5c4a10; margin-bottom: 24px; line-height: 1.5; }
+  .toc { background: #fff; border: 1px solid #e0ddd3; border-radius: 8px; padding: 18px 22px; margin-bottom: 28px; font-family: Arial, Helvetica, sans-serif; font-size: 0.88rem; }
+  .toc h2 { font-family: Georgia, serif; font-size: 1.05rem; margin: 0 0 10px; color: #14213d; }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin-bottom: 6px; }
+  .toc a { color: #6b4b1a; text-decoration: none; font-weight: bold; }
+  .toc a:hover { text-decoration: underline; }
+  .toc .desc { display: block; font-weight: normal; color: #766f5e; font-size: 0.82rem; margin-top: 2px; }
+  section.card { background: #fff; border: 1px solid #e0ddd3; border-radius: 8px; padding: 26px 28px; margin-bottom: 28px; border-left: 5px solid #c9a227; }
+  .tag { display: inline-block; font-family: Arial, Helvetica, sans-serif; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; background: #c9a227; color: #14213d; padding: 3px 10px; border-radius: 10px; margin-bottom: 10px; font-weight: bold; }
+  h2.section-title { font-size: 1.5rem; color: #14213d; margin: 0 0 4px; }
+  .dateline { font-family: Arial, Helvetica, sans-serif; font-size: 0.78rem; color: #766f5e; margin-bottom: 18px; }
+  h3.paper { font-size: 1.08rem; color: #14213d; margin: 22px 0 10px; padding-bottom: 6px; border-bottom: 1px solid #f0ede4; }
+  h3.paper:first-of-type { margin-top: 4px; }
+  p { margin: 0 0 12px; }
+  ul.ledare { padding-left: 20px; margin: 0 0 12px; }
+  ul.ledare li { margin-bottom: 8px; }
+  .analys-box { background: #f7f3e6; border: 1px solid #e8d99a; border-radius: 6px; padding: 16px 20px; margin-top: 16px; }
+  .analys-box strong.lead { color: #6b4b1a; }
+  .sources { font-family: Arial, Helvetica, sans-serif; font-size: 0.78rem; color: #766f5e; margin-top: 14px; }
+  .sources a { color: #6b4b1a; }
+  .inline-src { font-size: 0.9em; }
+  footer { text-align: center; font-family: Arial, Helvetica, sans-serif; font-size: 0.75rem; color: #999; padding: 24px; }
+  a.jump { color: #6b4b1a; }
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <h1>NackaSidan Veckomagasin</h1>
+  <div class="sub">Fördjupning och analys av veckans nyheter</div>
+  <div class="meta">Veckan som gått: 28 juli &ndash; 3 augusti 2026</div>
+</div>
+
+<div class="container">
+
+  <div class="note">
+    <strong>Om detta test:</strong> Det här är en experimentell veckomagasin-version av NackaSidan, byggd på Styrbjörns begäran för att testa ett format som fördjupar och analyserar veckans nyheter ämne för ämne, i stället för att lista korta punkter dag för dag. Filen är fristående och påverkar inte den dagliga NackaSidan, den schemalagda uppdateringen eller GitHub Pages-sidan. Om formatet känns bra går det att bygga vidare på, byta ut den dagliga sidan mot, eller köra parallellt med den.
+  </div>
+
+  <nav class="toc">
+    <h2>I detta nummer</h2>
+    <ol>
+      <li><a class="jump" href="#utrikes">Utrikes: Mellanöstern och Ukraina</a><span class="desc">Från attackhot till förhandlingsbord - och ett Ukraina som slår tillbaka</span></li>
+      <li><a class="jump" href="#sverige">Sverige &amp; politik: Valrörelsens sista skede</a><span class="desc">Opinionsläget, Tidöspänningarna och 42 dagar till valet</span></li>
+      <li><a class="jump" href="#ekonomi">Ekonomi: Inflationen vänder upp, Fed väntar</a><span class="desc">Eurozonen, Fed, och AI-branschens nya fas</span></li>
+      <li><a class="jump" href="#sport">Sport: Guimarães-affären och medaljkampen</a><span class="desc">Djurgården, Arsenal, golf och Formel 1:s silly season</span></li>
+      <li><a class="jump" href="#kultur">Kultur &amp; medier: AI-bakslaget</a><span class="desc">Kulturdebatt, recensioner och frågan om AI-bolagens ansvar</span></li>
+      <li><a class="jump" href="#miljo">Miljö &amp; klimat: Värmerekord och tekniklöften</a><span class="desc">WMO:s varning och kapplöpningen om klimatteknik</span></li>
+    </ol>
+  </nav>
+
+  <section class="card" id="utrikes">
+    <span class="tag">Utrikes &middot; Fördjupning</span>
+    <h2 class="section-title">Mellanöstern och Ukraina: en vecka av skör de-eskalering</h2>
+    <div class="dateline">Veckan 28 juli &ndash; 3 augusti 2026</div>
+
+    <h3 class="paper">Iran och Hormuzsundet: från attackhot till förhandlingsbord</h3>
+    <p>Veckan inleddes med USA och Israel på väg att inleda en av de hårdaste bombkampanjerna hittills mot iransk energiinfrastruktur - en eskalering som byggde vidare på de "major combat operations" Trump inledde mot Iran redan i slutet av februari. I stället svängde läget dramatiskt: på lördagen meddelade Trump att attacken var inställd i väntan på ett avtal som skulle innebära full öppning av Hormuzsundet, och på söndagen bekräftade han att den var helt avblåst. Utrikesminister Marco Rubio gick ett steg längre och sa att Iran nu är "mer berett" att förhandla om både kärnprogrammet och sjöfarten genom sundet, med nya samtal inplanerade till måndagen.</p>
+    <p>Bakom kulisserna spelade regional diplomati sannolikt en roll: enligt CNN ska Trump ha talat med den saudiske kronprinsen, som uttryckte oro över konsekvenserna av nya amerikanska attacker. Iran självt har dock hela veckan varit försiktigt i sina egna uttalanden - utrikesminister Abbas Araghchi varnade USA för "äventyrliga handlingar" även efter att attacken ställts in, vilket tyder på att Teheran fortfarande betraktar det amerikanska agerandet med misstro snarare än som en ren förhandlingsöppning.</p>
+
+    <h3 class="paper">Gaza: Hamas fredsplan möter israeliskt tvivel</h3>
+    <p>Parallellt med Iran-spåret rörde sig Gaza-frågan i otakt med sig själv. Hamas gick under veckan med på ett utkast till fredsplan som innebär avväpning mot ett gradvis israeliskt tillbakadragande - ett genombrott efter månader av stillastående förhandlingar. Men Israel har ännu inte formellt behandlat eller godkänt planen, och enligt uppgift har man delat "allvarliga säkerhetsbetänkligheter" med Washington om just avväpningsupplägget. Samtidigt fortsatte israeliska attacker över Gaza genom hela veckan - Haaretz rapporterade om minst sex dödade, däribland ett barn, i en ny våg anfall så sent som under helgen.</p>
+    <p>Kombinationen är svår att tolka entydigt: ett diplomatiskt genombrott på pappret, men fortsatta dödsoffer på marken. Det säger något om hur Gaza-konflikten skiljer sig från Iran-spåret - där de politiska ledarnas retorik snabbt kan svänga mellan konfrontation och förhandling, är händelseutvecklingen i Gaza mer trögrörlig och mindre känslig för enskilda uttalanden från Washington.</p>
+
+    <h3 class="paper">Ukraina: Kiev under eld, Ryssland under press</h3>
+    <p>Kriget i Ukraina följde under veckan sitt etablerade mönster av ömsesidig eskalering utan avgörande. Natten mot den 1 augusti genomförde Ryssland en av krigets mest omfattande enskilda attacker mot Kiev - omkring 35 robotar och nära 190 drönare, minst nio döda och 40 skadade. Ukraina svarade dagen efter med egna långdistansslag mot ryskt territorium, mot bland annat flygvapenbasen i Engels och oljeraffinaderiet i Saratov, och avslutade veckan med drönarattacker som satte eld på ett lager i Ryssland och dödade minst fem personer.</p>
+    <p>Det som sticker ut mest är förlustsiffrorna: enligt ukrainska uppgifter blev juli en av krigets dyraste månader för Ryssland i mänskliga termer, med 42 860 dödade och sårade soldater under en enda månad. Ändå visar veckans stora Kiev-attack att Ryssland fortfarande har kapacitet att genomföra massiva, samordnade insatser - en påminnelse om att tunga förlustsiffror inte automatiskt översätts till minskad slagkraft på kort sikt.</p>
+
+    <div class="analys-box">
+      <strong class="lead">Analys:</strong> Veckans mönster i både Mellanöstern och Ukraina är detsamma: diplomatiska öppningar som inte matchas av motsvarande förändring på marken. Iran-spåret har gått från vagt "nära förestående avtal" till ett konkret, datumsatt möte - den tydligaste konkretiseringen på länge - men utan att Iran självt bekräftat någon eftergift. Gaza-planen är godkänd av Hamas men inte av Israel, och strider pågår fortfarande. Och i Ukraina fortsätter båda sidor att eskalera trots (eller kanske på grund av) att ingendera bedömer sig ha råd att blinka först. Slutsatsen för veckan som helhet: fler diplomatiska rörelser än på länge, men ingen av de tre konflikterna är närmare en faktisk lösning än de var för sju dagar sedan.
+    </div>
+    <div class="sources">Källor: <a href="https://abcnews.com/International/live-updates/iran-live-updates-tehran-progress-made-strait-hormuz/?id=135110405" target="_blank" rel="noopener">ABC News</a>, <a href="https://www.cnn.com/2026/08/02/world/live-news/iran-war-trump" target="_blank" rel="noopener">CNN</a>, <a href="https://www.aljazeera.com/news/liveblog/2026/7/31/iran-war-live-trump-says-hamas-to-disarm-israel-to-leave-gaza-gradually" target="_blank" rel="noopener">Al Jazeera</a>, <a href="https://www.haaretz.com/" target="_blank" rel="noopener">Haaretz</a>, <a href="https://www.npr.org/2026/07/30/g-s1-136276/russia-ukraine-war" target="_blank" rel="noopener">NPR</a>, <a href="https://www.ukrinform.net/rubric-ato" target="_blank" rel="noopener">Ukrinform</a>, <a href="https://kyivindependent.com/" target="_blank" rel="noopener">Kyiv Independent</a></div>
+  </section>
+
+  <section class="card" id="sverige">
+    <span class="tag">Sverige &amp; politik &middot; Fördjupning</span>
+    <h2 class="section-title">Valrörelsens sista skede: 42 dagar kvar</h2>
+    <div class="dateline">Veckan 28 juli &ndash; 3 augusti 2026</div>
+
+    <h3 class="paper">Opinionsläget: SD faller, S håller emot</h3>
+    <p>Veckans opinionsmätningar bekräftar en trend som byggts upp under sommaren: Sverigedemokraterna tappar mark samtidigt som Socialdemokraterna håller emot bättre än väntat. PolitPros sammanvägning från 2 augusti gav S 32,1%, SD 19,9% och M 17,2%, med regeringspartierna (M, KD, L) tillsammans på 44,4% av mandaten - 42 dagar innan valdagen 13 september. Bilden är dock inte helt entydig: Novus mätning från senare i juli gav en högre SD-siffra (20,4%) och ett lägre S (31,8%), medan Nordisk Opinions julibarometer visade SD ner hela 4,4 enheter till 19,1% och S under 30% för första gången i mätserien. Spridningen mellan instituten är ovanligt stor för årstiden, vilket i sig är en nyhet - opinionsläget är mer volatilt nu än på länge.</p>
+
+    <h3 class="paper">Tidöspänningar och sakfrågorna som avgör valet</h3>
+    <p>Under ytan på siffrorna ligger en mer strukturell osäkerhet: kommer Sverigedemokraterna fortsätta nöja sig med rollen som stödparti utan regeringsposter, eller kräver partiet mer inflytande i en eventuell ny mandatperiod - särskilt nu när M:s egna siffror stärkts relativt SD:s inom blocket? Novus återkommande mätning av "viktigaste politiska frågan" visar att sjukvård och skola toppar listan, följt av lag och ordning, medan försvarsfrågan - som växte kraftigt i vikt under vintern - fallit tillbaka något. Det betyder att valrörelsens tyngdpunkt i praktiken ligger på välfärdsfrågor snarare än på kriget i Ukraina eller Mellanöstern, trots att båda dominerar utrikesbevakningen.</p>
+    <p>Veckans svenska ledarsidor speglade en bredd av teman snarare än ett enskilt dominerande ämne: DN:s Max Hjelm kallade mandatperioden en "floppe" för Tidöpartierna, Expressens Ylva Nilsson kritiserade EU:s hantering av migrantkrisen i Ceuta som ett tecken på "EU:s stora svaghet", och flera ledarskribenter återkom till frågan om Sveriges beredskap i skuggan av krigen i Europa och Mellanöstern.</p>
+
+    <h3 class="paper">Lokalt: Nacka och Stockholm</h3>
+    <p>Lokalt i Nacka dominerades veckan av mer administrativa nyheter snarare än dramatik: en ny klimat- och miljödirektör (Katja Awiti) tillträder 10 augusti, ett nytt passersystem för återvinningscentraler införs samma dag, och samtliga 26 kommunala badplatser har nu toppklassning. I Stockholm har augusti inletts med ett tätt evenemangsprogram - EuroBasket för damer på Kistamässan, förberedelser inför seglings-VM på Riddarfjärden och Stockholms kulturfestival senare i månaden.</p>
+
+    <div class="analys-box">
+      <strong class="lead">Analys:</strong> Det mest talande med veckans svenska nyheter är kanske inte någon enskild händelse, utan just spridningen mellan opinionsinstituten - ett tecken på att väljarkåren är mer rörlig än den varit på länge, bara sex veckor före valet. Att SD:s tapp är den mest konsekventa iakttagelsen över flera institut, samtidigt som S håller sig kvar över 30% i de flesta mätningar, pekar mot ett val där båda blockens interna balans (M vs. SD respektive S vs. V/MP/C) kan bli minst lika avgörande som själva blockskillnaden. Det är också värt att notera hur lite själva sakfrågedebatten ännu handlar om de stora krigen internationellt - trots att de dominerar nyhetsflödet i övrigt, är det välfärden som styr det svenska valet.
+    </div>
+    <div class="sources">Källor: <a href="https://politpro.eu/en/sweden" target="_blank" rel="noopener">PolitPro</a>, <a href="https://novus.se/" target="_blank" rel="noopener">Novus</a>, <a href="https://nordiskopinion.se/" target="_blank" rel="noopener">Nordisk Opinion</a>, <a href="https://www.dn.se/ledare/" target="_blank" rel="noopener">DN</a>, <a href="https://www.expressen.se/ledare/" target="_blank" rel="noopener">Expressen</a>, <a href="https://www.nacka.se/" target="_blank" rel="noopener">Nacka kommun</a>, <a href="https://www.visitstockholm.se/" target="_blank" rel="noopener">Visit Stockholm</a></div>
+  </section>
+
+  <section class="card" id="ekonomi">
+    <span class="tag">Ekonomi &middot; Fördjupning</span>
+    <h2 class="section-title">Inflationen vänder upp, Fed väntar och AI-branschen mognar</h2>
+    <div class="dateline">Veckan 28 juli &ndash; 3 augusti 2026</div>
+
+    <h3 class="paper">Eurozonen: inflationen accelererar igen</h3>
+    <p>Efter vårens gradvisa nedgång vände eurozonens inflation upp under veckan - 2,9% i juli, jämfört med 2,8% i juni. Uppgången drevs nästan helt av energipriser (10,0%, upp från 8,5%) i takt med att spänningarna mellan USA och Iran blossade upp igen inför helgens attackhot. Kärninflationen steg till 2,5% och tjänsteinflationen till 3,3% - båda klart över ECB:s tvåprocentsmål. ECB har redan skruvat upp sina egna prognoser för året och kopplar uttryckligen upprevideringen till kriget i Mellanöstern, samtidigt som tillväxtprognosen skrivits ned. Det är ett tydligt exempel på hur direkt kopplad europeisk penningpolitik numera är till händelseutvecklingen i en helt annan del av världen.</p>
+
+    <h3 class="paper">Fed håller emot trots tre avvikande röster</h3>
+    <p>Amerikanska Federal Reserve höll räntan oförändrad i intervallet 3,50-3,75% vid sitt julimöte - men beslutet var långt ifrån enhälligt. Tre regionala Fed-chefer röstade emot och ville se en höjning, med motiveringen att inflationen legat över målet i över fem år. Den nye ordföranden Kevin Warsh - känd för att medvetet ge marknaden färre tydliga signaler om nästa drag - beskrev beslutet inte som en paus utan som "en noggrann genomgång av det ekonomiska läget", och underströk att Fed "inte kommer att tveka att agera" för att nå prisstabilitet. Den ovanligt höga osäkerheten kring Feds nästa steg speglar dels Warshs egen kommunikationsstil, dels en verklig oenighet inom komitén om hur allvarligt den ihållande inflationen ska vägas mot tecken på avmattning i ekonomin.</p>
+
+    <h3 class="paper">AI-branschen: från chattbots till forskningsgenombrott</h3>
+    <p>På bolagsnivå fortsatte AI-branschen sin snabba utveckling under veckan, men med en tydlig förskjutning i fokus. OpenAI meddelade att en intern version av bolagets kommande flaggskeppsmodell löst tio tidigare olösta problem inom matematik och teoretisk datavetenskap - för endast omkring 2 000 dollar i beräkningskraft - och publicerat formella bevis som verifierar resultaten. Samtidigt fortsatte den kinesiska konkurrenten DeepSeek att pressa priserna med sin nya V4 Flash-modell. Branschanalytiker beskriver en bredare trend där köparnas intresse flyttas bort från uppseendeväckande chattdemos mot verktyg som faktiskt löser konkreta uppgifter snabbare - en mognadsprocess som återspeglas i att flera bolag samtidigt stramar åt sina AI-budgetar för att fokusera på mätbar avkastning snarare än ren experimentlusta.</p>
+
+    <div class="analys-box">
+      <strong class="lead">Analys:</strong> Veckans ekonominyheter binds samman av en gemensam tråd: penningpolitiken på båda sidor Atlanten dras i olika riktningar av krafter den inte kan kontrollera. ECB:s uppreviderade inflationsprognos är i praktiken en direkt konsekvens av krigsrisken i Mellanöstern, medan Feds interna splittring handlar mer om inhemsk, ihållande inflation som redan varat i över fem år. Att båda centralbankerna samtidigt balanserar mellan att bekämpa inflation och undvika att strypa en redan bräcklig tillväxt, mitt i en period av snabb teknologisk omvälvning inom AI, gör penningpolitiken ovanligt svårförutsägbar inför hösten - en osäkerhet som Kevin Warshs medvetet otydliga kommunikationsstil snarast förstärker än dämpar.
+    </div>
+    <div class="sources">Källor: <a href="https://tradingeconomics.com/euro-area/inflation-cpi" target="_blank" rel="noopener">Trading Economics</a>, <a href="https://www.ecb.europa.eu/" target="_blank" rel="noopener">ECB</a>, <a href="https://www.cnbc.com/2026/07/29/fed-rate-decision-july-2026.html" target="_blank" rel="noopener">CNBC</a>, <a href="https://www.pbs.org/newshour/economy/watch-live-fed-chair-warsh-holds-news-conference-after-latest-interest-rate-decision" target="_blank" rel="noopener">PBS News</a>, <a href="https://www.buildfastwithai.com/blogs/ai-news-today-august-2-2026" target="_blank" rel="noopener">BuildFastWithAI</a>, <a href="https://aitoolsrecap.com/Blog/AINewsaugust2026.aspx" target="_blank" rel="noopener">AI Tools Recap</a></div>
+  </section>
+
+  <section class="card" id="sport">
+    <span class="tag">Sport &middot; Fördjupning</span>
+    <h2 class="section-title">Guimarães-affären och medaljkampen</h2>
+    <div class="dateline">Veckan 28 juli &ndash; 3 augusti 2026</div>
+
+    <h3 class="paper">Djurgården: medaljstrid inför Västerås-mötet</h3>
+    <p>Djurgården gick in i veckans avslutande omgång på fjärde plats i Allsvenskan, med en 1-0-vinst borta mot Degerfors som senaste resultat - ett mål av Bo Hegland efter en assist av Hampus Findell, trots att Degerfors dominerade bollinnehavet. Klubben stärkte samtidigt truppen genom att hämta målvakten Lukas Jonsson från VfL Osnabrück, medan mittfältaren Mattias Siltanen, 19, uppges vara het på transfermarknaden med bud från både Toulouse och Lyon. Söndagens hemmamatch mot nykomlingen Västerås SK, som ligger strax bakom på femteplats, blir en direkt duell om medaljplatserna - med IK Sirius fortsatt klart ledande i toppen av tabellen.</p>
+
+    <h3 class="paper">Arsenal: Guimarães klar för medicinsk kontroll</h3>
+    <p>Veckans stora affär inom europeisk fotboll var Arsenals jakt på Newcastles kapten Bruno Guimarães. Efter att Gunners två tidigare bud (70 och 80 miljoner euro) refuserats nådde klubbarna till slut en principöverenskommelse kring 90 miljoner euro, och enligt de senaste uppgifterna är en medicinsk undersökning inbokad till måndagen - ett tydligt tecken på att affären, värd omkring 80 miljoner pund, går mot sin slutfas med ett femårskontrakt för den brasilianske mittfältaren. Samtidigt fortsatte Arsenal städa i truppen: Christos Tzolis anslöt från Club Brugge, medan Leandro Trossard, Jakub Kiwior, Piero Hincapié och flera andra lämnat klubben inför en säsong med dubbla fronter i Premier League och Champions League.</p>
+
+    <h3 class="paper">Golf och Formel 1: slutspel och silly season</h3>
+    <p>Inom golfen går PGA Tour in i FedExCup-slutspelet, där Ludvig Åberg klättrat till toppskiktet av ställningen inför den första deltävlingen i Memphis (12-16 augusti). Inom Formel 1 dominerades veckan av förarmarknaden inför 2027 - Max Verstappens prestandaklausul (han måste ligga topp 2 vid sommaruppehållet, men ligger på P7) har satt fart på spekulationer om ett sabbatsår med bibehållen lön, medan endast fem förare hittills är helt säkrade för nästa säsong.</p>
+
+    <div class="analys-box">
+      <strong class="lead">Analys:</strong> Sportveckan illustrerar hur transferfönstrets sista veckor koncentrerar affärer som förhandlats i månader - Guimarães-sagan gick från "intensifierade samtal" till inbokad medicinsk kontroll på bara några dagar, ett mönster som brukar upprepa sig när deadline (1 september) närmar sig. För Djurgården är söndagens match mer avgörande än den kan verka: ett tapp mot Västerås skulle inte bara kosta poäng utan också släppa in en direkt konkurrent om medaljplatserna på samma höjd i tabellen - medan en vinst skulle befästa fjärdeplatsen med marginal inför höstens avgörande omgångar.
+    </div>
+    <div class="sources">Källor: <a href="https://sports.yahoo.com/articles/newcastle-united-star-bruno-guimaraes-184000591.html" target="_blank" rel="noopener">Yahoo Sports</a>, <a href="https://www.caughtoffside.com/2026/08/03/medical-scheduled-arsenal-make-breakthrough-brazilian/" target="_blank" rel="noopener">CaughtOffside</a>, <a href="https://www.svenskfotboll.se/serier-cuper/tabell-och-resultat/allsvenskan-2026/133348/" target="_blank" rel="noopener">Svensk Fotboll</a>, <a href="https://www.pgatour.com/" target="_blank" rel="noopener">PGA Tour</a>, <a href="https://www.formula1.com/" target="_blank" rel="noopener">Formula1.com</a></div>
+  </section>
+
+  <section class="card" id="kultur">
+    <span class="tag">Kultur &amp; medier &middot; Fördjupning</span>
+    <h2 class="section-title">AI-bakslaget och sommarens kulturdebatt</h2>
+    <div class="dateline">Veckan 28 juli &ndash; 3 augusti 2026</div>
+
+    <h3 class="paper">Kulturdebatt: AI-bolagens backlash</h3>
+    <p>En återkommande tråd i veckans DN Kultur var frågan om AI-bolagens makt och ansvar - Martin Gelin skrev om vad han kallar en begynnande "global backlash mot AI-företagen", ett tema som löper parallellt med veckans AI-säkerhetsnyheter (se Ekonomi). Samtidigt debatterades mer traditionella kulturfrågor: Fanna Ndow Norrbys kolumn om vitt snus väckte reaktioner, och Johannes Klenell kritiserade Liberalernas förhållande till SD i en krönika som band ihop kultur- och politikdebatten.</p>
+
+    <h3 class="paper">Recensioner: opera, musik och böcker</h3>
+    <p>På recensionssidan dominerade sommarens scenprogram - DN:s recensent lyfte fram Monteverdis "Poppeas kröning" för sin sensuella dramatik, medan Ariana Grandes nya album fick ett mer avvaktande mottagande ("habilt men tar inga risker"). Inom litteraturen uppmärksammades bland annat en spökroman och en poesisamling, och Kristina Lindquist rekommenderade fem böcker för "en ensam sommar" - allt mot bakgrund av att litteraturfestivalen på Österlen samlat författare och läsare för samtal om läsningens roll i en tid av digital distraktion.</p>
+
+    <h3 class="paper">Mediedebatt: public service och ungas AI-relationer</h3>
+    <p>Den svenska mediedebatten kretsade under veckan kring det pågående arbetet med public service-uppdraget för perioden 2026-2033, där folkbildning och journalistik lyfts som en uttalad prioritet. Parallellt har Mediemyndigheten undersökt ungas syn på "artificiella relationer" - AI-chattbotar som används för samtal och socialt stöd - en fråga som fått ny skärpa i ljuset av veckans AI-säkerhetsincidenter och den bredare debatten om AI-bolagens transparens.</p>
+
+    <div class="analys-box">
+      <strong class="lead">Analys:</strong> Det är slående hur mycket av veckans kulturbevakning - från Gelins essä om AI-backlash till mediedebatten om ungas artificiella relationer - kretsar kring samma underliggande fråga som dominerar ekonomi- och tekniknyheterna: hur mycket makt och förtroende ska ges till AI-system och de bolag som bygger dem. Kultursidorna fungerar här som en plats där den mer tekniska debatten (som förs på ekonomi- och tekniksidorna) omsätts till frågor om identitet, relationer och vad som gör mänsklig kontakt värdefull - ett tecken på att AI-frågan under 2026 spridit sig långt bortom de rent tekniska och ekonomiska sammanhangen.
+    </div>
+    <div class="sources">Källor: <a href="https://www.dn.se/kultur/" target="_blank" rel="noopener">DN Kultur</a>, <a href="https://mprt.se/" target="_blank" rel="noopener">Mediemyndigheten</a>, <a href="https://www.regeringen.se/" target="_blank" rel="noopener">Regeringen.se</a></div>
+  </section>
+
+  <section class="card" id="miljo">
+    <span class="tag">Miljö &amp; klimat &middot; Fördjupning</span>
+    <h2 class="section-title">Värmerekord och tekniklöften</h2>
+    <div class="dateline">Veckan 28 juli &ndash; 3 augusti 2026</div>
+
+    <h3 class="paper">Global uppvärmning: WMO:s varning</h3>
+    <p>FN:s väderorgan WMO upprepade under veckan sin varning om att världen går in i en ny period av extremvärme - med 86% sannolikhet att minst ett av åren 2026-2030 slår rekordet från 2024 som varmaste året uppmätt. Den tidigare Nasa-forskaren James Hansen upprepade sin bedömning att 2026 sannolikt blir det varmaste året hittills, trots att det inleddes svalare än 2024. En ljuspunkt: tio år efter Parisavtalet har prognosen för global uppvärmning förbättrats från cirka 4 grader till dagens 2,8 grader - ett framsteg, men fortfarande långt över 1,5-gradersmålet.</p>
+
+    <h3 class="paper">Europas värmebölja i efterhand</h3>
+    <p>En attributionsstudie från World Weather Attribution publicerad under sommaren visade att junis värmebölja i Europa - med temperaturer på 40 grader i Frankrike, Portugal och Spanien - hade varit "praktiskt taget omöjlig" för 50 år sedan. Franska hälsomyndigheten har sedan dess fördubblat sin skattning av överdödlighet kopplad till värmen, från 1 000 till över 2 000 personer - en påminnelse om att klimatförändringens hälsokonsekvenser ofta blir tydliga först i efterhand, när dödssiffrorna räknas samman.</p>
+
+    <h3 class="paper">Klimatteknik: från perovskit till DAC</h3>
+    <p>På teknikfronten fortsatte flera parallella spår att utvecklas: perovskit-solceller närmar sig verkningsgrader på 40% i laboratoriemiljö, forskare vid Luleå tekniska universitet har utvecklat ett vätskesystem som fångar in över 97% av koldioxiden i rökgaser, och branschen för direkt luftinfångning (DAC) beskrivs ha gått från "laboratoriecuriosum till infrastrukturverklighet" - även om kostnaden per infångat ton fortfarande är hög och behöver falla kraftigt för att bli storskaligt lönsam.</p>
+
+    <div class="analys-box">
+      <strong class="lead">Analys:</strong> Veckans klimatnyheter fångar den grundläggande spänningen i klimatfrågan just nu: samtidigt som uppvärmningsprognoserna gradvis förbättras tack vare politiska och tekniska framsteg, blir de konkreta konsekvenserna - värmeböljor, överdödlighet, extremväder - alltmer påtagliga i närtid. Teknikutvecklingen inom allt från solceller till koldioxidinfångning ger skäl till försiktig optimism på längre sikt, men den hjälper inte de tusentals människor som redan drabbats av sommarens värmeböljor. Frågan för hösten blir om de tekniska genombrotten kan skalas upp snabbare än de klimatrelaterade riskerna hinner materialiseras.
+    </div>
+    <div class="sources">Källor: <a href="https://www.carbonbrief.org/" target="_blank" rel="noopener">Carbon Brief</a>, <a href="https://insideclimatenews.org/" target="_blank" rel="noopener">Inside Climate News</a>, <a href="https://news.un.org/" target="_blank" rel="noopener">UN News</a>, <a href="https://www.ltu.se/" target="_blank" rel="noopener">Luleå tekniska universitet</a>, <a href="https://www.realtid.se/" target="_blank" rel="noopener">Realtid</a></div>
+  </section>
+
+  <footer>
+    NackaSidan Veckomagasin &middot; Test-prototyp, byggd 3 augusti 2026 &middot; Påverkar inte den dagliga NackaSidan
+  </footer>
+
+</div>
+</body>
+</html>
