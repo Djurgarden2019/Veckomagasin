@@ -74,6 +74,21 @@
   .filo-week { display: none; }
   .filo-week.active { display: block; }
   @media (max-width: 640px) { .filo-layout { flex-direction: column; } .filo-archive { position: static; flex: 1 1 auto; width: 100%; } }
+  .front-hero { margin: -26px -28px 24px; border-radius: 8px 8px 0 0; overflow: hidden; }
+  .front-hero img { width: 100%; height: 280px; object-fit: cover; display: block; }
+  .front-hero-caption { font-family: Arial, Helvetica, sans-serif; font-size: 0.72rem; color: #999; text-align: right; padding: 4px 0 0; }
+  .headline-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 18px 0 10px; }
+  .headline-card { border: 1px solid #e0ddd3; border-radius: 6px; padding: 16px 18px; background: #fbfaf7; display: flex; flex-direction: column; }
+  .headline-card .kicker { font-family: Arial, Helvetica, sans-serif; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; color: #8a6d1c; font-weight: bold; margin-bottom: 6px; }
+  .headline-card h3 { font-size: 1.02rem; color: #14213d; margin: 0 0 8px; border: none; padding: 0; }
+  .headline-card p { font-family: Arial, Helvetica, sans-serif; font-size: 0.85rem; color: #444; margin: 0 0 12px; flex: 1; }
+  .headline-link { align-self: flex-start; font-family: Arial, Helvetica, sans-serif; font-size: 0.78rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.03em; color: #14213d; background: #f0e6bd; border: none; border-radius: 4px; padding: 7px 14px; cursor: pointer; }
+  .headline-link:hover { background: #c9a227; }
+  .front-extra-label { font-family: Arial, Helvetica, sans-serif; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: #8b93ab; margin: 22px 0 8px; }
+  .front-extra-links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .front-extra-links button { font-family: Arial, Helvetica, sans-serif; font-size: 0.78rem; color: #5c4a10; background: #fbf3d9; border: 1px solid #e8d99a; border-radius: 14px; padding: 6px 14px; cursor: pointer; }
+  .front-extra-links button:hover { background: #efe1ae; }
+  @media (max-width: 640px) { .headline-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -90,7 +105,8 @@
 
 <nav class="tabnav">
   <ul>
-    <li><button type="button" data-tab="stockholm" class="active">Stockholm</button></li>
+    <li><button type="button" data-tab="forstasida" class="active">Förstasidan</button></li>
+    <li><button type="button" data-tab="stockholm">Stockholm</button></li>
     <li><button type="button" data-tab="sverige">Sverige</button></li>
     <li><button type="button" data-tab="utrikes">Utrikes</button></li>
     <li><button type="button" data-tab="varlden">Världen</button></li>
@@ -109,6 +125,7 @@
     <li><button type="button" data-tab="mat">Mat &amp; Dryck</button></li>
     <li><button type="button" data-tab="filosofi">Filosofi &amp; Psykologi</button></li>
     <li><button type="button" data-tab="historia">Historia</button></li>
+    <li><button type="button" data-tab="usa">USA</button></li>
   </ul>
 </nav>
 
@@ -118,8 +135,92 @@
     <strong>Om detta test:</strong> Det här är en experimentell veckomagasin-version av NackaSidan, byggd på Styrbjörns begäran för att testa ett format som fördjupar och analyserar veckans nyheter ämne för ämne, i stället för att lista korta punkter dag för dag. Sidan är nu uppdelad i flikar - klicka på en rubrik ovan för att läsa just den delen. Filen är fristående och påverkar inte den dagliga NackaSidan, den schemalagda uppdateringen eller GitHub Pages-sidan.
   </div>
 
+  <!-- ============ FÖRSTASIDAN ============ -->
+  <div class="tab-panel active" data-panel="forstasida">
+    <div class="front-hero">
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Stockholm_City_Hall-147793.jpg?width=1400" alt="Stockholms stadshus i augustiljus">
+    </div>
+    <div class="front-hero-caption">Bild: Stockholms stadshus. Foto: Josve05a (Wikimedia Commons, CC BY-SA).</div>
+    <section class="card">
+      <span class="tag">Förstasidan &middot; Veckan i korthet</span>
+      <h2 class="section-title">Huvudrubriker denna vecka</h2>
+      <div class="dateline">Veckan 28 juli &ndash; 3 augusti 2026</div>
+      <p>Här är veckans viktigaste rubriker från varje del av magasinet &ndash; klicka på en rubrik för att läsa hela fördjupningen.</p>
+      <div class="headline-grid">
+        <div class="headline-card">
+          <div class="kicker">Stockholm</div>
+          <h3>Stora publikevenemang trängs ihop i augusti</h3>
+          <p>Stockholm Pride, kulturfestivaler och sommarens sista uteserveringar konkurrerar om utrymmet &ndash; och väderprognosen väcker frågor.</p>
+          <button type="button" class="headline-link" data-tab="stockholm">Läs mer</button>
+        </div>
+        <div class="headline-card">
+          <div class="kicker">Sverige</div>
+          <h3>AI-varning inför det första valet i AI-tid</h3>
+          <p>Myndigheter och forskare varnar för AI-genererad desinformation inför höstens val &ndash; ett nytt hot i svensk valrörelse.</p>
+          <button type="button" class="headline-link" data-tab="sverige">Läs mer</button>
+        </div>
+        <div class="headline-card">
+          <div class="kicker">Utrikes</div>
+          <h3>Iran och Hormuzsundet: från attackhot till förhandlingsbord</h3>
+          <p>Spänningarna i Persiska viken skiftar mellan militär upptrappning och diplomatiska trevare &ndash; med stora konsekvenser för oljepriset.</p>
+          <button type="button" class="headline-link" data-tab="utrikes">Läs mer</button>
+        </div>
+        <div class="headline-card">
+          <div class="kicker">Världen</div>
+          <h3>Ryssland: bränslebrist och rekordförluster</h3>
+          <p>Inrikes bränslebrist och tunga militära förluster sätter press på Kreml, samtidigt som kriget i Ukraina fortsätter utan slut i sikte.</p>
+          <button type="button" class="headline-link" data-tab="varlden">Läs mer</button>
+        </div>
+        <div class="headline-card">
+          <div class="kicker">Politik</div>
+          <h3>Opinionsundersökningarna: SD faller, S håller emot</h3>
+          <p>Nya mätningar visar rörelser i blockspolitiken inför valet &ndash; med flera tänkbara regeringsscenarier i sikte.</p>
+          <button type="button" class="headline-link" data-tab="politik">Läs mer</button>
+        </div>
+        <div class="headline-card">
+          <div class="kicker">Kultur</div>
+          <h3>Film: prisbelönta debuter och sommarens biopremiärer</h3>
+          <p>Nya bokrecensioner, filmpremiärer och kulturdebatt &ndash; se vad veckans kulturbevakning lyfter fram.</p>
+          <button type="button" class="headline-link" data-tab="kultur">Läs mer</button>
+        </div>
+        <div class="headline-card">
+          <div class="kicker">Debatt</div>
+          <h3>Ledarsidorna: en valrörelse utan tydlig vinnare</h3>
+          <p>Landets ledarskribenter är oense om vem som vinner på sommarens politiska händelser &ndash; en genomgång av de viktigaste ståndpunkterna.</p>
+          <button type="button" class="headline-link" data-tab="debatt">Läs mer</button>
+        </div>
+        <div class="headline-card">
+          <div class="kicker">Miljö &amp; Klimat</div>
+          <h3>Global uppvärmning: WMO:s varning</h3>
+          <p>Världsmeteorologiska organisationen slår larm om klimatutvecklingen, samtidigt som ny klimatteknik börjar skalas upp.</p>
+          <button type="button" class="headline-link" data-tab="miljo">Läs mer</button>
+        </div>
+        <div class="headline-card">
+          <div class="kicker">Forskning &amp; Framsteg</div>
+          <h3>Medicin: ett blodprov för 50 cancerformer</h3>
+          <p>Ny forskning kring tidig cancerdiagnostik och andra vetenskapliga genombrott presenteras i veckans genomgång.</p>
+          <button type="button" class="headline-link" data-tab="forskning">Läs mer</button>
+        </div>
+        <div class="headline-card">
+          <div class="kicker">Sport</div>
+          <h3>Arsenal: Guimarães klar för medicinsk kontroll</h3>
+          <p>Transferfönstrets slutspurt, ishockeynyheter och läget för Djurgården och Arsenal &ndash; allt samlat i veckans sportgenomgång.</p>
+          <button type="button" class="headline-link" data-tab="sport">Läs mer</button>
+        </div>
+      </div>
+      <div class="front-extra-label">Extra fördjupning</div>
+      <div class="front-extra-links">
+        <button type="button" data-tab="ekonomi">Ekonomi</button>
+        <button type="button" data-tab="mat">Mat &amp; Dryck</button>
+        <button type="button" data-tab="filosofi">Filosofi &amp; Psykologi</button>
+        <button type="button" data-tab="historia">Historia</button>
+        <button type="button" data-tab="usa">USA</button>
+      </div>
+    </section>
+  </div>
+
   <!-- ============ STOCKHOLM ============ -->
-  <div class="tab-panel active" data-panel="stockholm">
+  <div class="tab-panel" data-panel="stockholm">
     <section class="card">
       <span class="tag">Stockholm &middot; Fördjupning</span>
       <h2 class="section-title">Stockholm: nyheter, evenemang och väder</h2>
@@ -368,6 +469,10 @@
       <p>Inom litteraturen dominerade en spökroman och en poesisamling veckans recensioner - båda beskrivs som säregna läsupplevelser, där poesin enligt kritikern är "starkt doftande" men "ibland uppträder i urtvättad kostym". Till det kommer Kristina Lindquists lista med fem böcker för "en ensam sommar", och litteraturfestivalen på Österlen som under sommaren samlat författare och läsare för samtal om läsningens roll i en tid av digital distraktion - ett återkommande tema i årets litteraturdebatt (se även Kulturdebatt på Debatt-fliken). Bland boktipsen sticker klassikern "Beloved" av Toni Morrison ut som veckans återkommande rekommendation: en krävande men djupt gripande roman om slaveriets eftervärkningar i USA, byggd på den sanna historien om en förrymd slav som valde att döda sitt eget barn hellre än att se det återföras till slaveriet. Boken belönades med Pulitzerpriset 1988 och blev en central del av motiveringen när Morrison 1993 blev den första afroamerikanska författaren att tilldelas Nobelpriset i litteratur. <a href="https://www.dn.se/kultur/" target="_blank" rel="noopener" class="inline-src">(källa: DN Kultur)</a></p>
       <div class="item-analys"><strong>Analys:</strong> Att en fyrtio år gammal amerikansk roman om slaveriet fortsätter vara veckans mest rekommenderade boktips, snarare än något av sommarens nyutgivna verk, säger något om hur svårt det är för samtida skönlitteratur att mäta sig med redan kanoniserade verk i kritikernas ögon. "Beloved" har dessutom haft en särskild plats i amerikansk litteraturdebatt som en av de mest omstridda böckerna att bli föremål för förbudsförsök i amerikanska skolbibliotek de senaste åren, vilket gör den återkommande rekommendationen till mer än bara ett litterärt omdöme - den blir indirekt också ett ställningstagande i den pågående debatten om vilken litteratur unga läsare ska ha tillgång till.</div>
 
+      <h3 class="paper">Bokrecensioner: augustis nyutgivningar</h3>
+      <p>August är en av bokårets mest intensiva utgivningsmånader, och veckan bjuder på flera efterlängtade svenska titlar. John Ajvide Lindqvist, mest känd för skräckromanen "Låt den rätte komma in", återvänder med "Sommaren 1986: Lovisa och Melinda" (18 augusti), en tillbakablickande skildring med hans typiska kombination av vardagsrealism och obehag som väntas locka både hans etablerade läsekrets och nya läsare. Deckarveteranen Michael Hjorth, tidigare känd för samarbetet med Hans Rosenfeldt kring Sebastian Bergman-serien, skriver nu tillsammans med den isländske författaren Bjarni Þórsson kriminalromanen "Fiskarens död" (12 augusti), ett nordiskt samarbete som speglar hur svensk kriminallitteratur alltmer produceras i gränsöverskridande författarpar. Samma dag släpps "Tysta leken", skriven av Ida Axelsson tillsammans med Åsa Bonelli, medan Agnes Lidbeck - tidigare uppmärksammad för sina skarpt iakttagande romaner om relationer och klass - kommer med "Fotografens skugga" (21 augusti). Debuterande Johannes Selåker ger samtidigt ut "Stekenjokk" (13 augusti), uppkallad efter fjällplatån i Västerbotten, ett debutverk som förläggare beskriver som ett av höstens mest bevakade svenska förstlingsverk.</p>
+      <div class="item-analys"><strong>Analys:</strong> Att så många etablerade författare (Ajvide Lindqvist, Hjorth, Lidbeck) släpper nya verk inom loppet av samma vecka som en oprövad debutant (Selåker) är ett typiskt mönster för augusti, som förlagsbranschen länge betraktat som årets viktigaste lanseringsfönster inför höstens bokrea och julhandel - debutanter placeras ofta medvetet i skuggan av stjärnnamnens releasedatum för att ändå dra nytta av den förhöjda mediebevakningen kring bokhösten som helhet.</div>
+
       <h3 class="paper">Musik: opera möter pop</h3>
       <p>DN:s recensent lyfte fram Monteverdis "Poppeas kröning" för sin sensuella dramatik och sångarnas nakna uttryck - ett av barockoperans mest moraliskt komplexa verk, komponerat redan på 1640-talet och fortfarande en av de mest spelade tidiga operorna, där makten till slut segrar över dygden i en handling som skildrar den romerske kejsaren Neros äktenskapsbrott. Vid sidan av operan fick Ariana Grandes nya album ett betydligt svalare mottagande: "habil men vågar inte ta risker", enligt DN:s Sara Martinsson, som menar att skivan alltför mycket liknar Taylor Swift utan att hitta en egen identitet - en kritik som återkommer ofta när redan etablerade popartister försöker bredda sin sound utan att helt lämna det som gjort dem framgångsrika. Veckans utvalda klassiska album, Miles Davis "Kind of Blue" (1959), representerar en helt annan typ av tidlöshet - inspelad på bara två sessioner med en stjärnspäckad sextett kring Davis, Coltrane och Bill Evans, byggd på enkla skalor snarare än den tätare ackordbaserade bebopstilen, och alltjämt det bästsäljande jazzalbumet genom tiderna.</p>
       <div class="item-analys"><strong>Analys:</strong> Kontrasten mellan en 380 år gammal opera som fortfarande imponerar och ett nytt popalbum som anklagas för att sakna egen identitet visar hur högt ribban ligger för samtida artister - allmänheten och kritikerna jämför medvetet eller omedvetet alltid det nya mot det redan beprövade. Att "Kind of Blue" fortfarande lyfts fram som det bästsäljande jazzalbumet genom tiderna, mer än sex decennier efter inspelningen, illustrerar samma mönster inom jazzen som inom operan - genrens mest kommersiellt betydelsefulla verk tenderar att vara historiska snarare än samtida, vilket är en utmaning för dagens jazzmusiker som vill nå en bredare publik.</div>
@@ -492,10 +597,14 @@
       <p>Utöver fotbollen och de stora transferaffärerna bjöd veckan på flera rubriker inom andra sporter. Inom golfen går PGA Tour in i FedExCup-slutspelet, touren tre avslutande turneringar där fältet successivt krymps och poängen från hela säsongen avgör vem som till sist tar hem den stora bonuspotten, där Ludvig Åberg klättrat till toppskiktet av ställningen inför den första deltävlingen i Memphis (12-16 augusti) efter en stark sommarform. Inom Formel 1 dominerades veckan av förarmarknaden inför 2027 - Max Verstappens prestandaklausul, ett avtalsvillkor som ska ge honom rätt att lämna Red Bull om han inte presterar på topp-2-nivå vid sommaruppehållet men som han för närvarande missar då han ligger på P7, har satt fart på spekulationer om ett sabbatsår med bibehållen lön, medan endast fem förare hittills är helt säkrade för nästa säsong och resten av grid än så länge lever i osäkerhet inför vinterns kontraktsförhandlingar. Vid sidan av dessa två sporter pågår som tidigare nämnts (se Sverige-fliken) också SM-veckan, som samlar dussintals svenska mästerskap i olika idrotter till en och samma vecka och som ger ett bredare perspektiv på svensk idrott bortom elitfotbollen och de stora internationella affärerna.</p>
       <div class="item-analys"><strong>Analys:</strong> Verstappens situation är ovanlig i F1-sammanhang - en regerande stjärna med prestandaklausul mot sitt eget stall speglar hur maktbalansen förskjutits något från team till förare de senaste åren, och ett eventuellt sabbatsår skulle bli det första i sitt slag för en aktiv mästare i modern tid. Att SM-veckan pågår parallellt med de stora transferaffärerna påminner om att sportnyheter sällan handlar enbart om elitfotbollens miljardaffärer, utan lika mycket om bredare, folkliga idrottsevenemang. Åbergs stigande FedExCup-form är dessutom särskilt betydelsefull ur ett svenskt perspektiv - PGA Tour-slutspelet är en av de sporter där svensk elit historiskt haft svårt att nå riktig världstopp jämfört med till exempel skidor eller ishockey, vilket gör en stark sommarform inför de tre avgörande deltävlingarna till en av de mer bevakningsvärda svenska sporthistorierna resten av augusti.</div>
 
+      <h3 class="paper">Ishockey: silly season i SHL och svenskt facit i NHL-draften</h3>
+      <p>Ishockeyn befinner sig mitt i den period spelare och klubbar själva kallar "silly season" - sommarens intensiva period av kontraktsförhandlingar, klubbyten och truppbygge inför SHL-premiären 19 september. Över 30 spelare lämnade SHL för utlandsspel efter fjolårssäsongen, vilket tvingat flera klubbar att bygga om betydande delar av sina trupper inför den nya säsongen, samtidigt som SHL Impact Tour - ligans försäsongsturnering mot utländska klubblag - återkommer med 14 stopp mellan oktober och mars. På den internationella scenen blev sommarens stora svenska höjdpunkt NHL-draften, där Frölundas Ivar Stenberg valdes som två:a totalt av San Jose Sharks - den högsta placeringen för en svensk spelare på flera år. Stenberg, som noterades för 33 poäng (11 mål, 22 assist) på 43 matcher i SHL som artonåring, den bästa poängskörden för en så ung SHL-spelare sedan Daniel och Henrik Sedin säsongen 1998/99, ledde dessutom Sverige till guld vid junior-VM som poängkung. Han skrev efter draften på ett treårigt begynnarkontrakt med Sharks och imponerade på klubbens utvecklingsläger i somras. Totalt valdes sju svenska spelare i draftens första omgång, vilket bekräftar den svenska hockeyakademins fortsatt starka internationella genomslag.</p>
+      <div class="item-analys"><strong>Analys:</strong> Att Stenbergs poängskörd som 18-åring jämförs direkt med bröderna Sedin - två av de mest framgångsrika svenska NHL-spelarna någonsin - sätter ovanligt höga förväntningar redan innan han spelat en enda NHL-match, en jämförelse som visserligen är sportsligt motiverad utifrån statistiken men som också illustrerar hur snabbt medier och fans bygger narrativ kring unga stjärnskott långt innan deras seniorkarriärer egentligen inletts.</div>
+
       <div class="analys-box">
         <strong class="lead">Veckans helhetsanalys:</strong> Sportveckan illustrerar hur transferfönstrets sista veckor koncentrerar affärer som förhandlats i månader - Guimarães-sagan gick från "intensifierade samtal" till inbokad medicinsk kontroll på bara några dagar, ett mönster som brukar upprepa sig när deadline (1 september) närmar sig. För Djurgården är söndagens match mer avgörande än den kan verka: ett tapp mot Västerås skulle inte bara kosta poäng utan också släppa in en direkt konkurrent om medaljplatserna på samma höjd i tabellen - medan en vinst skulle befästa fjärdeplatsen med marginal inför höstens avgörande omgångar. Genomgående för veckans sportnyheter - transferaffärer, förarmarknad och medaljstrider - är att de flesta stora beslut fattas under stark tidspress mot en fast deadline, oavsett om det handlar om ett transferfönster som stänger, en säsong som går mot sitt slut eller ett kontrakt som måste förnyas inför nästa år; sport skiljer sig här från många andra samhällsområden genom att nästan alla viktiga beslut har ett exakt, offentligt känt slutdatum snarare än att kunna skjutas upp i det oändliga.
       </div>
-      <div class="sources">Källor: <a href="https://sports.yahoo.com/articles/newcastle-united-star-bruno-guimaraes-184000591.html" target="_blank" rel="noopener">Yahoo Sports</a>, <a href="https://www.caughtoffside.com/2026/08/03/medical-scheduled-arsenal-make-breakthrough-brazilian/" target="_blank" rel="noopener">CaughtOffside</a>, <a href="https://www.svenskfotboll.se/serier-cuper/tabell-och-resultat/allsvenskan-2026/133348/" target="_blank" rel="noopener">Svensk Fotboll</a>, <a href="https://www.pgatour.com/" target="_blank" rel="noopener">PGA Tour</a>, <a href="https://www.formula1.com/" target="_blank" rel="noopener">Formula1.com</a></div>
+      <div class="sources">Källor: <a href="https://sports.yahoo.com/articles/newcastle-united-star-bruno-guimaraes-184000591.html" target="_blank" rel="noopener">Yahoo Sports</a>, <a href="https://www.caughtoffside.com/2026/08/03/medical-scheduled-arsenal-make-breakthrough-brazilian/" target="_blank" rel="noopener">CaughtOffside</a>, <a href="https://www.svenskfotboll.se/serier-cuper/tabell-och-resultat/allsvenskan-2026/133348/" target="_blank" rel="noopener">Svensk Fotboll</a>, <a href="https://www.pgatour.com/" target="_blank" rel="noopener">PGA Tour</a>, <a href="https://www.formula1.com/" target="_blank" rel="noopener">Formula1.com</a>, <a href="https://hockeysverige.se/shl/" target="_blank" rel="noopener">Hockeysverige</a>, <a href="https://www.nhl.com/news/ivar-stenberg-signs-entry-level-contract-with-san-jose-sharks" target="_blank" rel="noopener">NHL.com</a></div>
     </section>
   </div>
 
@@ -674,6 +783,40 @@
     </section>
   </div>
 
+  <!-- ============ USA (extra) ============ -->
+  <div class="tab-panel" data-panel="usa">
+    <section class="card">
+      <span class="tag">USA &middot; Fördjupning</span>
+      <h2 class="section-title">USA: Trump vid halvvägsmärket och mellanårsvalet</h2>
+      <div class="dateline">Veckan 28 juli &ndash; 3 augusti 2026</div>
+
+      <h3 class="paper">Trumps siffror: rekordlåga inför valet</h3>
+      <p>President Trumps stöd har fortsatt falla under sommaren och ligger nu på sin lägsta nivå under hela den andra mandatperioden. Enligt de senaste sammanvägda mätningarna godkänner omkring 37-38% av amerikanerna hans arbete som president, medan 58-59% ogillar det - ett nettostöd på ungefär minus 21 procentenheter, den svagaste noteringen sedan han svors in för sin andra period. Bara 21% av amerikanerna uppger att de "starkt" godkänner hans politik, och stödet bland självständiga väljare (34%) ligger nu under den nivå (36%) som föregick demokraternas stora mandatvinst i representanthuset 2018. Nedgången är särskilt tydlig bland yngre väljare, där 70% i åldersgruppen 18-34 år ogillar presidentens arbete, samt i flera vågmästarstater där hans siffror sjunkit kraftigt bara tre månader före valdagen.</p>
+      <div class="item-analys"><strong>Analys:</strong> Att stödet bland självständiga väljare nu ligger under nivån från 2018 - året då demokraterna vann representanthuset med hela 41 mandat - är en av de mest talande jämförelserna inför höstens val, eftersom just den väljargruppen historiskt haft oproportionerligt stor betydelse för utfallet i jämna mellanårsval där partilojala väljare på båda sidor ändå röstar.</div>
+
+      <h3 class="paper">Migrationspolitiken: från styrkefråga till belastning</h3>
+      <p>Immigration och gränskontroll var en av de frågor som mest gynnade Trump i valet 2024, men har under 2026 utvecklats till en av hans svagaste. Godkännandet av hans hantering av migrationsfrågan har fallit från omkring 51% i mars 2025 till mellan 38 och 43% i olika mätningar sommaren 2026, med hela 60% som ogillar hans linje i en färsk NBC News-mätning - en tvåsiffrig försämring sedan förra sommaren. Nedgången har drivits av flera uppmärksammade händelser: dödsfall i samband med myndigheten ICE:s ingripanden, däribland skjutningen av en 37-årig mamma i Minneapolis, samt rapporterade dödsfall i förvarsanläggningar i flera delstater. Kritiker menar att tillslagen, som Trump ursprungligen lovade skulle fokusera på papperslösa med kriminell bakgrund, i praktiken kommit att omfatta betydligt bredare grupper, inklusive medborgare och personer med giltiga uppehållstillstånd. Stödet bland latinamerikanska väljare - en grupp Trump gjorde påtagliga inbrytningar hos i valet 2024 - har fallit kraftigt till omkring 31% godkännande.</p>
+      <div class="item-analys"><strong>Analys:</strong> Att en fråga som en gång var presidentens starkaste kort nu urholkar hans stöd, inklusive bland väljargrupper som tidigare rört sig mot honom, illustrerar en klassisk politisk risk med aggressiv genomförandepolitik - metoderna för att implementera en popular övergripande princip (strängare gränskontroll) kan i praktiken bli så pass kontroversiella att de undergräver stödet för själva principen, särskilt när enskilda uppmärksammade dödsfall ger politiken ett mänskligt ansikte i nyhetsrapporteringen.</div>
+
+      <h3 class="paper">Tullar och handelspolitik: fortsatt osäkerhet</h3>
+      <p>Trump-administrationens tullpolitik fortsätter att prägla den ekonomiska debatten. Sent i juli infördes nya tullar på 554 kanadensiska produktkategorier - däribland alkoholhaltiga drycker, hockeyutrustning och mejeriprodukter - som ett svar på vad administrationen kallar diskriminerande behandling av amerikanska fordon, med start 19 augusti. USA:s handelsrepresentant har dessutom slutfört en bred så kallad Section 301-tull kopplad till tvångsarbete som omfattar över 80 handelspartner. Enligt oberoende beräkningar innebär årets tullar en genomsnittlig kostnad på omkring 920 dollar per hushåll, utan att de hittills meningsfullt förändrat USA:s handelsunderskott. Ett bakslag för administrationen kom i februari då USA:s högsta domstol underkände tullar som införts med stöd av undantagslagen IEEPA, medan andra tullar - vissa av dem infördes redan under Trumps första mandatperiod 2018 - fortsatt gäller. Samtidigt pausade Trump i augusti ytterligare höjda tullar mot Kina i ytterligare 90 dagar, en förlängning av det handelsavtal som slöts i juni.</p>
+      <div class="item-analys"><strong>Analys:</strong> Att Högsta domstolen underkänt en del av tullarna samtidigt som administrationen fortsätter införa nya via andra juridiska vägar visar hur tullpolitiken blivit ett slags juridiskt-politiskt schackspel, där domstolsbeslut inte nödvändigtvis stoppar den övergripande linjen utan snarare tvingar administrationen att hitta alternativa lagliga grunder för samma mål - en dynamik som sannolikt kommer fortsätta prägla handelspolitiken långt efter höstens val oavsett utfall.</div>
+
+      <h3 class="paper">Representanthuset: demokraterna klara favoriter</h3>
+      <p>På den så kallade generic ballot-frågan - vilket parti väljare säger att de tänker rösta på i kongressvalet, oavsett enskilda kandidater - leder demokraterna med mellan 4 och 7 procentenheter i sammanvägda mätningar under sommaren, en ledning som varit stabil sedan våren. De senaste prognoserna ger demokraterna omkring 85% sannolikhet att vinna majoritet i representanthuset, med ett medianscenario på ungefär 230 av husets 435 platser - en marginal som skulle innebära ett betydande maktskifte jämfört med dagens republikanska majoritet. Historiskt har en ledning i den här storleksordningen på generic ballot brukat motsvara mandatvinster i samma härad som demokraternas våg 2018, då partiet tog 41 nya platser.</p>
+      <div class="item-analys"><strong>Analys:</strong> Generic ballot-frågan är ett av de mest tillförlitliga enskilda måtten för att förutsäga mellanårsval eftersom den fångar den bredare partipolitiska stämningen snarare än enskilda kandidaters styrkor och svagheter - men marginalen mellan en jämn valnatt och en verklig "våg" avgörs ofta av just de enskilda distrikten med tightast konkurrens, vilket gör att dagens siffror pekar mot ett gynnsamt men inte garanterat utfall för demokraterna.</div>
+
+      <h3 class="paper">Senaten: republikanernas försvarslinje mot ett ogynnsamt landskap</h3>
+      <p>Republikanerna försvarar en majoritet på 53-47 i senaten, men landskapet ser mer utmanande ut än på länge. Demokraterna riktar in sig på Maine, där den femgångna moderata republikanska senatorn Susan Collins - ordförande i senatens anslagsutskott - historiskt visat sig svårslagen men nu möter en stat Trump förlorade med omkring sju procentenheter, samt North Carolina, en stat Trump vann med bara tre procentenheter och där tidigare guvernören Roy Cooper ställer upp som demokratisk utmanare. Samtidigt försöker republikanerna själva gå på offensiven mot fyra demokratiskt hållna platser - i Trump-vunna Georgia och Michigan, samt i de knappt förlorade Minnesota och New Hampshire. Georgias demokratiske senator Jon Ossoff, som vann sitt nuvarande mandat med knapp marginal för sex år sedan, räknas som cykelns mest utsatta sittande senator men har samlat in betydande kampanjmedel inför försvaret av sin plats.</p>
+      <div class="item-analys"><strong>Analys:</strong> Att både demokrater och republikaner samtidigt har trovärdiga offensiva mål i senaten - i stället för att bara försvara egna platser - gör årets senatsval ovanligt öppet jämfört med tidigare mellanårsval, där det oftast varit tydligt vilket parti som befunnit sig i en renodlat defensiv position; utfallet i senaten kan därför komma att avvika betydligt från det mer entydiga demokratiska övertaget i representanthusprognoserna.</div>
+
+      <div class="analys-box">
+        <strong class="lead">Veckans helhetsanalys:</strong> Sammantaget tecknar sommarens amerikanska politiska landskap en bild som på flera sätt påminner om 2018 - ett historiskt lågt presidentstöd, en tydlig demokratisk ledning på generic ballot, och ett stöd bland självständiga väljare som fallit under den nivå som då föregick en stor mandatvinst för oppositionen. Det som skiljer sig är att flera av de sakfrågor som drivit nedgången - inte minst migrationspolitikens genomförande - är frågor Trump själv gjort till kärnan i sin politiska identitet, vilket gör dagens opinionsläge mer direkt kopplat till presidentens egna prioriteringar än 2018 års mellanårsval var. Representanthusets prognoser pekar mot ett tydligt demokratiskt övertag, medan senaten - där båda partier har trovärdiga anfallsmål samtidigt som de försvarar egna platser - framstår som den mer osäkra och sannolikt mer avgörande arenan för hur mycket av sin politiska handlingsfrihet administrationen behåller efter valdagen i november.
+      </div>
+      <div class="sources">Källor: <a href="https://www.natesilver.net/p/trump-approval-ratings-nate-silver-bulletin" target="_blank" rel="noopener">Silver Bulletin</a>, <a href="https://www.usnews.com/news/national-news/articles/2026-08-03/trumps-state-by-state-approval-ratings-bleak-3-months-ahead-of-midterms" target="_blank" rel="noopener">U.S. News</a>, <a href="https://apnorc.org/projects/trumps-approval-on-immigration-remains-steady/" target="_blank" rel="noopener">AP-NORC</a>, <a href="https://www.axios.com/2026/01/15/trump-ice-foreign-policy-economy-immigration-polls" target="_blank" rel="noopener">Axios</a>, <a href="https://www.natesilver.net/p/generic-ballot-average-2026-nate-silver-bulletin-congress-polls" target="_blank" rel="noopener">Silver Bulletin: Generic Ballot</a>, <a href="https://en.wikipedia.org/wiki/2026_United_States_elections" target="_blank" rel="noopener">Wikipedia: 2026 United States elections</a>, <a href="https://www.newsweek.com/map-shows-democrats-chances-in-key-senate-races-with-98-days-to-midterms-12249548" target="_blank" rel="noopener">Newsweek</a>, <a href="https://taxfoundation.org/research/all/federal/trump-tariffs-trade-war/" target="_blank" rel="noopener">Tax Foundation: Tariff Tracker</a></div>
+    </section>
+  </div>
+
   <footer>
     NackaSidan Veckomagasin &middot; Test-prototyp, byggd 3 augusti 2026 &middot; Påverkar inte den dagliga NackaSidan
   </footer>
@@ -690,6 +833,11 @@
     window.scrollTo(0, 0);
   }
   buttons.forEach(function(b) {
+    b.addEventListener('click', function() { showTab(b.getAttribute('data-tab')); });
+  });
+
+  var frontLinks = document.querySelectorAll('.headline-link[data-tab], .front-extra-links button[data-tab]');
+  frontLinks.forEach(function(b) {
     b.addEventListener('click', function() { showTab(b.getAttribute('data-tab')); });
   });
 
