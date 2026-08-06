@@ -74,6 +74,21 @@
   .filo-week { display: none; }
   .filo-week.active { display: block; }
   @media (max-width: 640px) { .filo-layout { flex-direction: column; } .filo-archive { position: static; flex: 1 1 auto; width: 100%; } }
+  .front-hero { margin: -26px -28px 24px; border-radius: 8px 8px 0 0; overflow: hidden; }
+  .front-hero img { width: 100%; height: 280px; object-fit: cover; display: block; }
+  .front-hero-caption { font-family: Arial, Helvetica, sans-serif; font-size: 0.72rem; color: #999; text-align: right; padding: 4px 0 0; }
+  .headline-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 18px 0 10px; }
+  .headline-card { border: 1px solid #e0ddd3; border-radius: 6px; padding: 16px 18px; background: #fbfaf7; display: flex; flex-direction: column; }
+  .headline-card .kicker { font-family: Arial, Helvetica, sans-serif; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; color: #8a6d1c; font-weight: bold; margin-bottom: 6px; }
+  .headline-card h3 { font-size: 1.02rem; color: #14213d; margin: 0 0 8px; border: none; padding: 0; }
+  .headline-card p { font-family: Arial, Helvetica, sans-serif; font-size: 0.85rem; color: #444; margin: 0 0 12px; flex: 1; }
+  .headline-link { align-self: flex-start; font-family: Arial, Helvetica, sans-serif; font-size: 0.78rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.03em; color: #14213d; background: #f0e6bd; border: none; border-radius: 4px; padding: 7px 14px; cursor: pointer; }
+  .headline-link:hover { background: #c9a227; }
+  .front-extra-label { font-family: Arial, Helvetica, sans-serif; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: #8b93ab; margin: 22px 0 8px; }
+  .front-extra-links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .front-extra-links button { font-family: Arial, Helvetica, sans-serif; font-size: 0.78rem; color: #5c4a10; background: #fbf3d9; border: 1px solid #e8d99a; border-radius: 14px; padding: 6px 14px; cursor: pointer; }
+  .front-extra-links button:hover { background: #efe1ae; }
+  @media (max-width: 640px) { .headline-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -90,7 +105,8 @@
 
 <nav class="tabnav">
   <ul>
-    <li><button type="button" data-tab="stockholm" class="active">Stockholm</button></li>
+    <li><button type="button" data-tab="forstasida" class="active">Förstasidan</button></li>
+    <li><button type="button" data-tab="stockholm">Stockholm</button></li>
     <li><button type="button" data-tab="sverige">Sverige</button></li>
     <li><button type="button" data-tab="utrikes">Utrikes</button></li>
     <li><button type="button" data-tab="varlden">Världen</button></li>
@@ -119,8 +135,92 @@
     <strong>Om detta test:</strong> Det här är en experimentell veckomagasin-version av NackaSidan, byggd på Styrbjörns begäran för att testa ett format som fördjupar och analyserar veckans nyheter ämne för ämne, i stället för att lista korta punkter dag för dag. Sidan är nu uppdelad i flikar - klicka på en rubrik ovan för att läsa just den delen. Filen är fristående och påverkar inte den dagliga NackaSidan, den schemalagda uppdateringen eller GitHub Pages-sidan.
   </div>
 
+  <!-- ============ FÖRSTASIDAN ============ -->
+  <div class="tab-panel active" data-panel="forstasida">
+    <div class="front-hero">
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Stockholm_City_Hall-147793.jpg?width=1400" alt="Stockholms stadshus i augustiljus">
+    </div>
+    <div class="front-hero-caption">Bild: Stockholms stadshus. Foto: Josve05a (Wikimedia Commons, CC BY-SA).</div>
+    <section class="card">
+      <span class="tag">Förstasidan &middot; Veckan i korthet</span>
+      <h2 class="section-title">Huvudrubriker denna vecka</h2>
+      <div class="dateline">Veckan 28 juli &ndash; 3 augusti 2026</div>
+      <p>Här är veckans viktigaste rubriker från varje del av magasinet &ndash; klicka på en rubrik för att läsa hela fördjupningen.</p>
+      <div class="headline-grid">
+        <div class="headline-card">
+          <div class="kicker">Stockholm</div>
+          <h3>Stora publikevenemang trängs ihop i augusti</h3>
+          <p>Stockholm Pride, kulturfestivaler och sommarens sista uteserveringar konkurrerar om utrymmet &ndash; och väderprognosen väcker frågor.</p>
+          <button type="button" class="headline-link" data-tab="stockholm">Läs mer</button>
+        </div>
+        <div class="headline-card">
+          <div class="kicker">Sverige</div>
+          <h3>AI-varning inför det första valet i AI-tid</h3>
+          <p>Myndigheter och forskare varnar för AI-genererad desinformation inför höstens val &ndash; ett nytt hot i svensk valrörelse.</p>
+          <button type="button" class="headline-link" data-tab="sverige">Läs mer</button>
+        </div>
+        <div class="headline-card">
+          <div class="kicker">Utrikes</div>
+          <h3>Iran och Hormuzsundet: från attackhot till förhandlingsbord</h3>
+          <p>Spänningarna i Persiska viken skiftar mellan militär upptrappning och diplomatiska trevare &ndash; med stora konsekvenser för oljepriset.</p>
+          <button type="button" class="headline-link" data-tab="utrikes">Läs mer</button>
+        </div>
+        <div class="headline-card">
+          <div class="kicker">Världen</div>
+          <h3>Ryssland: bränslebrist och rekordförluster</h3>
+          <p>Inrikes bränslebrist och tunga militära förluster sätter press på Kreml, samtidigt som kriget i Ukraina fortsätter utan slut i sikte.</p>
+          <button type="button" class="headline-link" data-tab="varlden">Läs mer</button>
+        </div>
+        <div class="headline-card">
+          <div class="kicker">Politik</div>
+          <h3>Opinionsundersökningarna: SD faller, S håller emot</h3>
+          <p>Nya mätningar visar rörelser i blockspolitiken inför valet &ndash; med flera tänkbara regeringsscenarier i sikte.</p>
+          <button type="button" class="headline-link" data-tab="politik">Läs mer</button>
+        </div>
+        <div class="headline-card">
+          <div class="kicker">Kultur</div>
+          <h3>Film: prisbelönta debuter och sommarens biopremiärer</h3>
+          <p>Nya bokrecensioner, filmpremiärer och kulturdebatt &ndash; se vad veckans kulturbevakning lyfter fram.</p>
+          <button type="button" class="headline-link" data-tab="kultur">Läs mer</button>
+        </div>
+        <div class="headline-card">
+          <div class="kicker">Debatt</div>
+          <h3>Ledarsidorna: en valrörelse utan tydlig vinnare</h3>
+          <p>Landets ledarskribenter är oense om vem som vinner på sommarens politiska händelser &ndash; en genomgång av de viktigaste ståndpunkterna.</p>
+          <button type="button" class="headline-link" data-tab="debatt">Läs mer</button>
+        </div>
+        <div class="headline-card">
+          <div class="kicker">Miljö &amp; Klimat</div>
+          <h3>Global uppvärmning: WMO:s varning</h3>
+          <p>Världsmeteorologiska organisationen slår larm om klimatutvecklingen, samtidigt som ny klimatteknik börjar skalas upp.</p>
+          <button type="button" class="headline-link" data-tab="miljo">Läs mer</button>
+        </div>
+        <div class="headline-card">
+          <div class="kicker">Forskning &amp; Framsteg</div>
+          <h3>Medicin: ett blodprov för 50 cancerformer</h3>
+          <p>Ny forskning kring tidig cancerdiagnostik och andra vetenskapliga genombrott presenteras i veckans genomgång.</p>
+          <button type="button" class="headline-link" data-tab="forskning">Läs mer</button>
+        </div>
+        <div class="headline-card">
+          <div class="kicker">Sport</div>
+          <h3>Arsenal: Guimarães klar för medicinsk kontroll</h3>
+          <p>Transferfönstrets slutspurt, ishockeynyheter och läget för Djurgården och Arsenal &ndash; allt samlat i veckans sportgenomgång.</p>
+          <button type="button" class="headline-link" data-tab="sport">Läs mer</button>
+        </div>
+      </div>
+      <div class="front-extra-label">Extra fördjupning</div>
+      <div class="front-extra-links">
+        <button type="button" data-tab="ekonomi">Ekonomi</button>
+        <button type="button" data-tab="mat">Mat &amp; Dryck</button>
+        <button type="button" data-tab="filosofi">Filosofi &amp; Psykologi</button>
+        <button type="button" data-tab="historia">Historia</button>
+        <button type="button" data-tab="usa">USA</button>
+      </div>
+    </section>
+  </div>
+
   <!-- ============ STOCKHOLM ============ -->
-  <div class="tab-panel active" data-panel="stockholm">
+  <div class="tab-panel" data-panel="stockholm">
     <section class="card">
       <span class="tag">Stockholm &middot; Fördjupning</span>
       <h2 class="section-title">Stockholm: nyheter, evenemang och väder</h2>
@@ -733,6 +833,11 @@
     window.scrollTo(0, 0);
   }
   buttons.forEach(function(b) {
+    b.addEventListener('click', function() { showTab(b.getAttribute('data-tab')); });
+  });
+
+  var frontLinks = document.querySelectorAll('.headline-link[data-tab], .front-extra-links button[data-tab]');
+  frontLinks.forEach(function(b) {
     b.addEventListener('click', function() { showTab(b.getAttribute('data-tab')); });
   });
 
